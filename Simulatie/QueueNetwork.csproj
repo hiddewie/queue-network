@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{1B7492E0-B31D-43F5-8E9B-52063424BB7D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Simulatie</RootNamespace>
+    <AssemblyName>Simulatie</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enums\ServerStatus.cs" />
+    <Compile Include="Enums\SimulationEvent.cs" />
+    <Compile Include="Interfaces\DistributionInterface.cs" />
+    <Compile Include="Classes\Constants.cs" />
+    <Compile Include="Classes\HospitalSimulation.cs" />
+    <Compile Include="Classes\Distributions\DeterministicDistribution.cs" />
+    <Compile Include="Classes\Distributions\ExponentialDistribution.cs" />
+    <Compile Include="Classes\Distributions\LogNormalDistribtution.cs" />
+    <Compile Include="Classes\Distributions\NormalDistribution.cs" />
+    <Compile Include="Classes\Distributions\UniformDistribtution.cs" />
+    <Compile Include="Classes\Exceptions\NoEventException.cs" />
+    <Compile Include="Classes\Interval.cs" />
+    <Compile Include="Classes\Quotient.cs" />
+    <Compile Include="Classes\SimulationResult.cs" />
+    <Compile Include="Classes\ConfidenceInterval.cs" />
+    <Compile Include="Interfaces\SimulationMethod.cs" />
+    <Compile Include="Classes\SimulationMethods\ReplicationMethod.cs" />
+    <Compile Include="Classes\SimulationMethods\BatchMeansMethod.cs" />
+    <Compile Include="Classes\SimulationMethods\RegenerativeMethod.cs" />
+    <Compile Include="Classes\SimulationMethods\WarmUpDeterminationMethod.cs" />
+    <Compile Include="Enums\OperationType.cs" />
+    <Compile Include="Classes\HospitalResultGatherer.cs" />
+    <Compile Include="Interfaces\ResultGathererInterface.cs" />
+    <Compile Include="Classes\ParameterBag.cs" />
+    <Compile Include="Enums\TimeOfDay.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Classes\Distributions\" />
+    <Folder Include="Classes\Exceptions\" />
+    <Folder Include="Classes\SimulationMethods\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
