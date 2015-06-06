@@ -7,7 +7,6 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>QueueNetwork</RootNamespace>
     <AssemblyName>QueueNetwork</AssemblyName>
-    <BaseDirectory>.</BaseDirectory>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
@@ -36,46 +35,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Enums\ServerStatus.cs" />
-    <Compile Include="Enums\SimulationEvent.cs" />
-    <Compile Include="Interfaces\DistributionInterface.cs" />
-    <Compile Include="Classes\Constants.cs" />
-    <Compile Include="Classes\HospitalSimulation.cs" />
-    <Compile Include="Classes\Distributions\DeterministicDistribution.cs" />
-    <Compile Include="Classes\Distributions\ExponentialDistribution.cs" />
-    <Compile Include="Classes\Distributions\LogNormalDistribtution.cs" />
-    <Compile Include="Classes\Distributions\NormalDistribution.cs" />
-    <Compile Include="Classes\Distributions\UniformDistribtution.cs" />
-    <Compile Include="Classes\Exceptions\NoEventException.cs" />
-    <Compile Include="Classes\Interval.cs" />
-    <Compile Include="Classes\Quotient.cs" />
-    <Compile Include="Classes\SimulationResult.cs" />
-    <Compile Include="Classes\ConfidenceInterval.cs" />
-    <Compile Include="Interfaces\SimulationMethod.cs" />
-    <Compile Include="Classes\SimulationMethods\ReplicationMethod.cs" />
-    <Compile Include="Classes\SimulationMethods\BatchMeansMethod.cs" />
-    <Compile Include="Classes\SimulationMethods\RegenerativeMethod.cs" />
-    <Compile Include="Classes\SimulationMethods\WarmUpDeterminationMethod.cs" />
-    <Compile Include="Enums\OperationType.cs" />
-    <Compile Include="Classes\HospitalResultGatherer.cs" />
-    <Compile Include="Interfaces\ResultGathererInterface.cs" />
-    <Compile Include="Classes\ParameterBag.cs" />
-    <Compile Include="Enums\TimeOfDay.cs" />
     <Compile Include="Network\ITime.cs" />
     <Compile Include="Network\ILocation.cs" />
     <Compile Include="Network\IRouter.cs" />
     <Compile Include="Network\ISink.cs" />
     <Compile Include="Network\IUnit.cs" />
     <Compile Include="Network\ISource.cs" />
+    <Compile Include="Simulation\SimulationMethod\BatchMeansSimulationMethod.cs" />
+    <Compile Include="Simulation\SimulationMethod\ISimulationMethod.cs" />
+    <Compile Include="Simulation\SimulationMethod\RegenerativeSimulationMethod.cs" />
+    <Compile Include="Simulation\SimulationMethod\ReplicationSimulationMethod.cs" />
+    <Compile Include="Simulation\SimulationMethod\WarmUpDeterminationSimulationMethod.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Simulation\Result\ConfidenceInterval.cs" />
+    <Compile Include="Simulation\Result\Interval.cs" />
+    <Compile Include="Simulation\Result\ResultGathererInterface.cs" />
+    <Compile Include="Simulation\Result\SimulationResult.cs" />
+    <Compile Include="Simulation\Distribution\DeterministicDistribution.cs" />
+    <Compile Include="Simulation\Distribution\ExponentialDistribution.cs" />
+    <Compile Include="Simulation\Distribution\IDistribution.cs" />
+    <Compile Include="Simulation\Distribution\LogNormalDistribtution.cs" />
+    <Compile Include="Simulation\Distribution\NormalDistribution.cs" />
+    <Compile Include="Simulation\Distribution\UniformDistribtution.cs" />
+    <Compile Include="Simulation\Result\Quotient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Enums\" />
-    <Folder Include="Classes\Distributions\" />
-    <Folder Include="Classes\Exceptions\" />
-    <Folder Include="Classes\SimulationMethods\" />
     <Folder Include="Network\" />
+    <Folder Include="Simulation\" />
+    <Folder Include="Test\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
