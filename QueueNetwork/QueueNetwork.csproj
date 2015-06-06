@@ -61,6 +61,12 @@
     <Compile Include="Interfaces\ResultGathererInterface.cs" />
     <Compile Include="Classes\ParameterBag.cs" />
     <Compile Include="Enums\TimeOfDay.cs" />
+    <Compile Include="Network\ITime.cs" />
+    <Compile Include="Network\ILocation.cs" />
+    <Compile Include="Network\IRouter.cs" />
+    <Compile Include="Network\ISink.cs" />
+    <Compile Include="Network\IUnit.cs" />
+    <Compile Include="Network\ISource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
@@ -69,6 +75,7 @@
     <Folder Include="Classes\Distributions\" />
     <Folder Include="Classes\Exceptions\" />
     <Folder Include="Classes\SimulationMethods\" />
+    <Folder Include="Network\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
