@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="Simulatie\Simulatie.csproj">
+﻿<Properties StartupItem="QueueNetwork.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
