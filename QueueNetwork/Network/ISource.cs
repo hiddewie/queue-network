@@ -7,6 +7,7 @@ namespace QueueNetwork.Network {
 	 */
 	public interface ISource {
 		void setRouter(IRouter router);
+		IUnit generateUnit ();
 	}
 }
 
