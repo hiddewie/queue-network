@@ -6,8 +6,8 @@ namespace QueueNetwork.Network {
 	 * A source generates units
 	 */
 	public interface ISource {
-		void setRouter(IRouter router);
-		IUnit generateUnit ();
+		void SetRouter(IRouter router);
+		IUnit GenerateUnit ();
 	}
 }
 

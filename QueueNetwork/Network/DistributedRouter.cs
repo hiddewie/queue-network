@@ -5,19 +5,16 @@ namespace QueueNetwork.Network {
 	public class DistributedRouter : IRouter {
 		private List<ILocation> routeLocations;
 
-		public DistributedRouter (List<ILocation> routeLocation) {
-			setRouteLocation (routeLocation);
-		}
 		public DistributedRouter (List<ILocation> routeLocations) {
 			foreach (ILocation loc in routeLocations) {
-				addRouteLocation (loc);
+				AddRouteLocation (loc);
 			}
 		}
 
-		public void addRouteLocation (ILocation routeLocation) {
-
+		public void AddRouteLocation (ILocation routeLocation) {
+			routeLocations.Add (routeLocation);
 		}
-		public List<ILocation> getRouteLocations () {
+		public List<ILocation> GetRouteLocations () {
 			return routeLocations;
 		}
 	}

@@ -5,14 +5,14 @@ using QueueNetwork.Simulation;
 namespace QueueNetwork {
 	public class Clock {
 
-		private Time time;
+		private static Time time;
 
 		public Clock () {
-			this.getTime 
+			time = new Time (0.0);
 		}
 
-		public Time getTime () {
-
+		public static Time getTime () {
+			return time;
 		}
 	}
 }

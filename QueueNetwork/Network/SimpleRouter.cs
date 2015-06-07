@@ -6,14 +6,14 @@ namespace QueueNetwork.Network {
 		private ILocation routeLocation;
 
 		public SimpleRouter (ILocation routeLocation) {
-			setRouteLocation (routeLocation);
+			SetRouteLocation (routeLocation);
 		}
 
-		public ILocation getRouteLocation () {
+		public ILocation GetRouteLocation () {
 			return routeLocation;
 		}
 
-		public void setRouteLocation (IRouter routeLocation) {
+		public void SetRouteLocation (IRouter routeLocation) {
 			this.routeLocation = routeLocation;
 		}
 	}

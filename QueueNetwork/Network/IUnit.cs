@@ -8,8 +8,8 @@ namespace QueueNetwork.Network {
 	 * A unit goes from a source to a sink
 	 */
 	public interface IUnit {
-		void setArriveTime(Time arriveTime);
-		Time setDepartTime(Time departTime);
+		void SetArriveTime(Time arriveTime);
+		Time SetDepartTime(Time departTime);
 	}
 }
 

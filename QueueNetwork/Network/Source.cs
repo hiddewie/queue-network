@@ -8,14 +8,14 @@ namespace QueueNetwork.Network {
 		public Source () {
 		}
 		public Source (IRouter router) {
-			setRouter (router);
+			SetRouter (router);
 		}
 
-		public void setRouter (IRouter router) {
+		public void SetRouter (IRouter router) {
 			this.router = router;
 		}
 
-		public abstract IUnit generateUnit ();
+		public abstract IUnit GenerateUnit ();
 	}
 }
 
