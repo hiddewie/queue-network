@@ -5,13 +5,9 @@ using QueueNetwork.Simulation;
 namespace QueueNetwork {
 	public class Clock {
 
-		private static Time time;
+		private static double time = 0.0;
 
-		public Clock () {
-			time = new Time (0.0);
-		}
-
-		public static Time getTime () {
+		public static double getTime () {
 			return time;
 		}
 	}

@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace QueueNetwork.Network {
-	public class SimpleRouter : IRouter {
+namespace QueueNetwork {
+	public class SimpleRouter : Router {
 
-		private ILocation routeLocation;
+		private Location routeLocation;
 
-		public SimpleRouter (ILocation routeLocation) {
+		public SimpleRouter (Location routeLocation) {
 			SetRouteLocation (routeLocation);
 		}
 
-		public ILocation GetRouteLocation () {
+		public Location GetRouteLocation () {
 			return routeLocation;
 		}
 
-		public void SetRouteLocation (IRouter routeLocation) {
+		public void SetRouteLocation (Router routeLocation) {
 			this.routeLocation = routeLocation;
 		}
 	}

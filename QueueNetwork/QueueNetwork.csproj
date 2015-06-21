@@ -35,10 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Network\ILocation.cs" />
-    <Compile Include="Network\IRouter.cs" />
-    <Compile Include="Network\IUnit.cs" />
-    <Compile Include="Network\ISource.cs" />
     <Compile Include="Simulation\SimulationMethod\BatchMeansSimulationMethod.cs" />
     <Compile Include="Simulation\SimulationMethod\ISimulationMethod.cs" />
     <Compile Include="Simulation\SimulationMethod\RegenerativeSimulationMethod.cs" />
@@ -56,13 +52,17 @@
     <Compile Include="Simulation\Distribution\NormalDistribution.cs" />
     <Compile Include="Simulation\Distribution\UniformDistribtution.cs" />
     <Compile Include="Simulation\Result\Quotient.cs" />
-    <Compile Include="Network\Source.cs" />
     <Compile Include="Simulation\Clock.cs" />
-    <Compile Include="Simulation\Time.cs" />
     <Compile Include="Network\SimpleRouter.cs" />
     <Compile Include="Network\Sink.cs" />
     <Compile Include="Network\SimpleUnit.cs" />
     <Compile Include="Network\DistributedRouter.cs" />
+    <Compile Include="Network\Network.cs" />
+    <Compile Include="Network\Component.cs" />
+    <Compile Include="Network\Unit.cs" />
+    <Compile Include="Network\Source.cs" />
+    <Compile Include="Network\Router.cs" />
+    <Compile Include="Network\Location.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />

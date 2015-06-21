@@ -1,21 +1,20 @@
 ﻿using System;
 
-namespace QueueNetwork.Network {
-	public abstract class Source : ISource {
+namespace QueueNetwork {
+	public abstract class Source : Component {
 
-		private IRouter router;
+		private Router router {
+			get;
+			set;
+		}
 
 		public Source () {
 		}
-		public Source (IRouter router) {
-			SetRouter (router);
-		}
-
-		public void SetRouter (IRouter router) {
+		public Source (Router router) {
 			this.router = router;
 		}
 
-		public abstract IUnit GenerateUnit ();
+		public abstract Unit GenerateUnit ();
 	}
 }
 

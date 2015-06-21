@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace QueueNetwork.Network {
-	public class Sink : IRouter {
+namespace QueueNetwork {
+	public abstract class Sink : Router {
 		public Sink () {
 		}
 	}

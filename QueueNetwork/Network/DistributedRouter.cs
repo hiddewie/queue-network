@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QueueNetwork.Network {
-	public class DistributedRouter : IRouter {
+namespace QueueNetwork {
+	public class DistributedRouter : Router {
 		private List<ILocation> routeLocations;
 
 		public DistributedRouter (List<ILocation> routeLocations) {
