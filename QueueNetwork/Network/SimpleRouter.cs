@@ -2,7 +2,6 @@
 
 namespace QueueNetwork {
 	public class SimpleRouter : Router {
-
 		private Location routeLocation;
 
 		public SimpleRouter (Location routeLocation) {
@@ -17,8 +16,8 @@ namespace QueueNetwork {
 			this.routeLocation = routeLocation;
 		}
 
-		public override void Receive (Unit unit) {
-			routeLocation.Arrive (unit);
+		public override void Depart () {
+			routeLocation.Arrive (currentUnit);
 		}
 	}
 }

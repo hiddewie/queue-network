@@ -1,20 +1,19 @@
 ﻿using System;
 
 namespace QueueNetwork {
-	public abstract class Source : Component {
-
-		private Router router {
+	public abstract class Source : Component, IDeparting {
+		public IArriving DepartLocation {
 			get;
 			set;
 		}
 
 		public Source () {
 		}
-		public Source (Router router) {
-			this.router = router;
+		public Source (Location location) {
+			this.DepartLocation = location;
 		}
-
-		public abstract Unit GenerateUnit ();
+		public abstract double NextDeparture ();
+		public abstract void Depart ();
 	}
 }
 

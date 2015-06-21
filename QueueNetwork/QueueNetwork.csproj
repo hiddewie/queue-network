@@ -54,18 +54,20 @@
     <Compile Include="Simulation\Result\Quotient.cs" />
     <Compile Include="Simulation\Clock.cs" />
     <Compile Include="Network\Sink.cs" />
-    <Compile Include="Network\SimpleUnit.cs" />
     <Compile Include="Network\DistributedRouter.cs" />
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\Component.cs" />
     <Compile Include="Network\Unit.cs" />
     <Compile Include="Network\SimpleRouter.cs" />
     <Compile Include="Network\Source.cs" />
-    <Compile Include="Network\Router.cs" />
     <Compile Include="Network\Location.cs" />
     <Compile Include="Simulation\ServerStatus.cs" />
     <Compile Include="Network\IDeparting.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Network\PoissonSource.cs" />
+    <Compile Include="Network\IArriving.cs" />
+    <Compile Include="Network\Router.cs" />
+    <Compile Include="Network\ITimed.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />

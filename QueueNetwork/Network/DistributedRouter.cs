@@ -7,6 +7,8 @@ namespace QueueNetwork {
 		private List<Location> RouteLocations;
 		private UniformDistribution Distribution = new UniformDistribution (0, 1);
 
+		private Unit currentUnit;
+
 		public DistributedRouter (List<Location> routeLocations) {
 			foreach (Location loc in routeLocations) {
 				AddRouteLocation (loc);
@@ -20,7 +22,7 @@ namespace QueueNetwork {
 			return RouteLocations;
 		}
 
-		public override void Receive(Unit unit) {
+		public override void Depart () {
 			if (RouteLocations.Count == 0) {
 				throw new Exception ("No route locations, but receiving unit");
 			}
@@ -32,7 +34,8 @@ namespace QueueNetwork {
 				index++;
 				soFar += p;
 			}
-			RouteLocations [index].Arrive (unit);
+			RouteLocations [index].Arrive (currentUnit);
+			currentUnit = null;
 		}
 	}
 }

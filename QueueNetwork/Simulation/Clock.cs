@@ -10,6 +10,13 @@ namespace QueueNetwork {
 		public static double getTime () {
 			return time;
 		}
+
+		public static void advance (double t) {
+			if (t <= 0) {
+				throw new Exception (String.Format("Invalid advance time {0}", time));
+			}
+			time += t;
+		}
 	}
 }
 

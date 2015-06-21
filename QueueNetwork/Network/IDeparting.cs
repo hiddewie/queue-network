@@ -1,9 +1,12 @@
 ﻿using System;
 
 namespace QueueNetwork {
-	public interface IDeparting {
-		double NextDeparture ();
-		Unit Depart();
+	public interface IDeparting : ITimed {
+		IArriving DepartLocation {
+			get;
+			set;
+		}
+		void Depart();
 	}
 }
 
