@@ -9,7 +9,7 @@
     <ProjectGuid>{E8DD6650-18BB-42DA-9BAB-C596003DAE2A}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
-    <OutputPath>.\</OutputPath>
+    <OutputPath>.</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="HospitalResultGatherer.cs" />

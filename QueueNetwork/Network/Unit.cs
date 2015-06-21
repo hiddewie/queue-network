@@ -6,8 +6,8 @@ namespace QueueNetwork {
 	 * A unit goes from a source to a sink
 	 */
 	public abstract class Unit {
-		void SetArriveTime(double arriveTime);
-		double SetDepartTime(double departTime);
+		abstract public void SetArriveTime(double arriveTime);
+		abstract public double SetDepartTime(double departTime);
 	}
 }
 

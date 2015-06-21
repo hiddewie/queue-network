@@ -2,12 +2,13 @@
 
 namespace QueueNetwork {
 	public class Component {
-		protected Network parent {
+		protected Network Parent {
 			get;
 			set;
 		}
-		protected String name {
+		public String Name {
 			get;
+			protected set;
 		}
 	}
 }

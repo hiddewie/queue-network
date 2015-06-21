@@ -13,8 +13,12 @@ namespace QueueNetwork {
 			return routeLocation;
 		}
 
-		public void SetRouteLocation (Router routeLocation) {
+		public void SetRouteLocation (Location routeLocation) {
 			this.routeLocation = routeLocation;
+		}
+
+		public override void Receive (Unit unit) {
+			routeLocation.Arrive (unit);
 		}
 	}
 }

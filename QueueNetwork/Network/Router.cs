@@ -6,7 +6,7 @@ namespace QueueNetwork {
 	 * A router routes units from one location to another. It might absorb the unit when it acts like a sink.
 	 */
 	public abstract class Router : Component {
-		void Receive (IUnit unit);
+		public abstract void Receive (Unit unit);
 	}
 }
 

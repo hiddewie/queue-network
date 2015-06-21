@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,16 +53,19 @@
     <Compile Include="Simulation\Distribution\UniformDistribtution.cs" />
     <Compile Include="Simulation\Result\Quotient.cs" />
     <Compile Include="Simulation\Clock.cs" />
-    <Compile Include="Network\SimpleRouter.cs" />
     <Compile Include="Network\Sink.cs" />
     <Compile Include="Network\SimpleUnit.cs" />
     <Compile Include="Network\DistributedRouter.cs" />
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\Component.cs" />
     <Compile Include="Network\Unit.cs" />
+    <Compile Include="Network\SimpleRouter.cs" />
     <Compile Include="Network\Source.cs" />
     <Compile Include="Network\Router.cs" />
     <Compile Include="Network\Location.cs" />
+    <Compile Include="Simulation\ServerStatus.cs" />
+    <Compile Include="Network\IDeparting.cs" />
+    <Compile Include="EntryPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
