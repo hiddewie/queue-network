@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueueNetwork.Simulation.Distibution {
+namespace QueueNetwork.Distibution {
 	public interface IDistribution {
 		double NextDouble ();
 		double Expectation ();

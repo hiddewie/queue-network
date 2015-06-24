@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueueNetwork.Simulation.Distibution {
+namespace QueueNetwork.Distibution {
 	public class LogNormalDistribution : IDistribution {
 		private readonly double mu, sigma;
 		private NormalDistribution random;

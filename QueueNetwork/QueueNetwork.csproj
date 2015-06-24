@@ -62,17 +62,18 @@
     <Compile Include="Network\IArriving.cs" />
     <Compile Include="Network\Router.cs" />
     <Compile Include="Network\ITimed.cs" />
-    <Compile Include="Simulation\Distribution\DeterministicDistribution.cs" />
-    <Compile Include="Simulation\Distribution\ExponentialDistribution.cs" />
-    <Compile Include="Simulation\Distribution\IDistribution.cs" />
-    <Compile Include="Simulation\Distribution\LogNormalDistribtution.cs" />
-    <Compile Include="Simulation\Distribution\NormalDistribution.cs" />
-    <Compile Include="Simulation\Distribution\UniformDistribtution.cs" />
+    <Compile Include="Distribution\DeterministicDistribution.cs" />
+    <Compile Include="Distribution\ExponentialDistribution.cs" />
+    <Compile Include="Distribution\IDistribution.cs" />
+    <Compile Include="Distribution\LogNormalDistribtution.cs" />
+    <Compile Include="Distribution\NormalDistribution.cs" />
+    <Compile Include="Distribution\UniformDistribtution.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
     <Folder Include="Simulation\" />
     <Folder Include="Test\" />
+    <Folder Include="Simulation\SimulationGoal\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

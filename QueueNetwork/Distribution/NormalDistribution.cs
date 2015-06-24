@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueueNetwork.Simulation.Distibution {
+namespace QueueNetwork.Distibution {
 	public class NormalDistribution : IDistribution {
 		private static long seed = DateTime.Now.Ticks;
 

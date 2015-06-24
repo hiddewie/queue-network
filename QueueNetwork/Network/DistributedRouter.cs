@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using QueueNetwork.Simulation.Distibution;
+using QueueNetwork.Distibution;
 
 namespace QueueNetwork {
 	public class DistributedRouter : Router {
