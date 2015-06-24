@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace QueueNetwork.Distibution {
-	public class UniformDistribution : IDistribution {
+	public class UniformDistribution : IDistribution<double>  {
 		private static long seed = DateTime.Now.Ticks;
 
 		private readonly double min, max;
@@ -22,7 +22,7 @@ namespace QueueNetwork.Distibution {
 			random = new Random ((int) seed);
 		}
 
-		public double NextDouble () {
+		public double NextRandom () {
 			return min + random.NextDouble () * (max - min);
 		}
 

@@ -1,14 +1,14 @@
 ﻿using System;
 
 namespace QueueNetwork.Distibution {
-	public class DeterministicDistribution : IDistribution{
+	public class DeterministicDistribution : IDistribution<double> {
 		private readonly double lambda;
 
 		public DeterministicDistribution(double lambda) {
 			this.lambda = lambda;
 		}
 
-		public double NextDouble () {
+		public double NextRandom () {
 			return 1.0 / lambda;
 		}
 

@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace QueueNetwork.Distibution {
-	public class LogNormalDistribution : IDistribution {
+	public class LogNormalDistribution : IDistribution<double> {
 		private readonly double mu, sigma;
 		private NormalDistribution random;
 
@@ -19,8 +19,8 @@ namespace QueueNetwork.Distibution {
 			random = new NormalDistribution (0.0, 1.0);
 		}
 
-		public double NextDouble () {
-			return Math.Exp (mu + sigma * random.NextDouble ());
+		public double NextRandom () {
+			return Math.Exp (mu + sigma * random.NextRandom ());
 		}
 
 		public double Expectation () {

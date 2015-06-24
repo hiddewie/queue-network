@@ -9,7 +9,7 @@ namespace QueueNetwork {
 
 		public PoissonSource (double lambda) {
 			Distribution = new ExponentialDistribution(lambda);
-			nextDeparture = Distribution.NextDouble ();
+			nextDeparture = Distribution.NextRandom ();
 		}
 
 		public override double NextDeparture() {
@@ -17,7 +17,7 @@ namespace QueueNetwork {
 		}
 
 		public override void Depart () {
-			nextDeparture = Distribution.NextDouble ();
+			nextDeparture = Distribution.NextRandom ();
 
 			Unit unit = new Unit ();
 			unit.ArriveTime = Clock.GetTime ();

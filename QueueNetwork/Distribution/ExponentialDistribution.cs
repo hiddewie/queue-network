@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace QueueNetwork.Distibution {
-	public class ExponentialDistribution : IDistribution{
+	public class ExponentialDistribution : IDistribution<double> {
 		private static long seed = DateTime.Now.Ticks;
 
 		private readonly double lambda;
@@ -19,7 +19,7 @@ namespace QueueNetwork.Distibution {
 			random = new Random ((int) seed);
 		}
 
-		public double NextDouble () {
+		public double NextRandom () {
 			return -Math.Log (random.NextDouble ()) / lambda;
 		}
 

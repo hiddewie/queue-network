@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace QueueNetwork.Distibution {
-	public class NormalDistribution : IDistribution {
+	public class NormalDistribution : IDistribution<double>  {
 		private static long seed = DateTime.Now.Ticks;
 
 		private readonly double mu, sigma;
@@ -24,7 +24,7 @@ namespace QueueNetwork.Distibution {
 			random = new Random ((int) seed);
 		}
 
-		public double NextDouble () {
+		public double NextRandom () {
 			if (nextDoubleReady) {
 				nextDoubleReady = false;
 				return mu + sigma * nextDoubleCache;

@@ -68,6 +68,7 @@
     <Compile Include="Distribution\LogNormalDistribtution.cs" />
     <Compile Include="Distribution\NormalDistribution.cs" />
     <Compile Include="Distribution\UniformDistribtution.cs" />
+    <Compile Include="Distribution\DiscreteDistribution.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
