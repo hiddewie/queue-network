@@ -12,8 +12,9 @@ namespace QueueNetwork {
 		}
 
 		public override void Depart () {
-			Console.WriteLine(String.Format("Departing from SimpleRouter at time {0}", Clock.GetTime()));
+			CallPreDepart (new DepartEventArgs());
 			RouteLocation.Arrive (currentUnit);
+			CallPostDepart (new DepartEventArgs());
 		}
 	}
 }

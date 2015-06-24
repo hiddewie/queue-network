@@ -59,7 +59,6 @@
     <Compile Include="Network\IDeparting.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Network\PoissonSource.cs" />
-    <Compile Include="Network\IArriving.cs" />
     <Compile Include="Network\Router.cs" />
     <Compile Include="Network\ITimed.cs" />
     <Compile Include="Distribution\DeterministicDistribution.cs" />
@@ -74,6 +73,9 @@
     <Compile Include="Simulation\SimulationGoal\ISimluationGoal.cs" />
     <Compile Include="Simulation\SimulationGoal\NumberSimulationGoal.cs" />
     <Compile Include="Simulation\SimulationGoal\TimeSimulationGoal.cs" />
+    <Compile Include="Network\IArriving.cs" />
+    <Compile Include="Network\ArriveEventArgs.cs" />
+    <Compile Include="Network\DepartEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />

@@ -29,10 +29,12 @@ namespace QueueNetwork {
 		}
 
 		public override void Arrive (Unit unit) {
+			CallPreArrive (new ArriveEventArgs ());
 			if (!HasUnits () && active) {
 				nextDeparture = distribution.NextRandom ();
 			}
 			queue.Enqueue (unit);
+			CallPostArrive (new ArriveEventArgs ());
 		}
 
 		public override bool HasUnits () {
@@ -46,7 +48,9 @@ namespace QueueNetwork {
 			if (!HasUnits ()) {
 				throw new Exception ("Departing while no units in queue");
 			}
+			CallPreDepart (new DepartEventArgs ());
 			DepartLocation.Arrive ((Unit) queue.Dequeue ());
+			CallPostDepart (new DepartEventArgs ());
 		}
 
 		public override double NextDeparture () {

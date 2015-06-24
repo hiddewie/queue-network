@@ -17,12 +17,15 @@ namespace QueueNetwork {
 		}
 
 		public override void Depart () {
+			CallPreDepart (new DepartEventArgs ());
 			nextDeparture = Distribution.NextRandom ();
 
 			Unit unit = new Unit ();
-			unit.ArriveTime = Clock.GetTime ();
+			unit.SystemArriveTime = Clock.GetTime ();
+			unit.Source = this;
 
 			this.DepartLocation.Arrive (unit);
+			CallPostDepart (new DepartEventArgs ());
 		}
 	}
 }

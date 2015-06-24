@@ -26,8 +26,10 @@ namespace QueueNetwork {
 			if (RouteLocations.Count == 0) {
 				throw new Exception ("No route locations, but receiving unit");
 			}
+			CallPreDepart (new DepartEventArgs ());
 			RouteLocations [distribution.NextRandom()].Arrive (currentUnit);
 			currentUnit = null;
+			CallPostDepart (new DepartEventArgs ());
 		}
 	}
 }

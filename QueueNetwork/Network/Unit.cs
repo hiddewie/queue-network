@@ -6,11 +6,19 @@ namespace QueueNetwork {
 	 * A unit goes from a source to a sink
 	 */
 	public class Unit {
-		public double ArriveTime {
+		public double SystemArriveTime {
 			get;
 			set;
 		}
-		public double DepartTime {
+		public double SystemDepartTime {
+			get;
+			set;
+		}
+		public Source Source {
+			get;
+			set;
+		}
+		public Sink Sink {
 			get;
 			set;
 		}
