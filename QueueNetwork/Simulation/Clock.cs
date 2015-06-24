@@ -7,7 +7,7 @@ namespace QueueNetwork {
 
 		private static double time = 0.0;
 
-		public static double getTime () {
+		public static double GetTime () {
 			return time;
 		}
 

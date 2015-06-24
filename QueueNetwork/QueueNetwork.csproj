@@ -45,12 +45,6 @@
     <Compile Include="Simulation\Result\Interval.cs" />
     <Compile Include="Simulation\Result\ResultGathererInterface.cs" />
     <Compile Include="Simulation\Result\SimulationResult.cs" />
-    <Compile Include="Simulation\Distribution\DeterministicDistribution.cs" />
-    <Compile Include="Simulation\Distribution\ExponentialDistribution.cs" />
-    <Compile Include="Simulation\Distribution\IDistribution.cs" />
-    <Compile Include="Simulation\Distribution\LogNormalDistribtution.cs" />
-    <Compile Include="Simulation\Distribution\NormalDistribution.cs" />
-    <Compile Include="Simulation\Distribution\UniformDistribtution.cs" />
     <Compile Include="Simulation\Result\Quotient.cs" />
     <Compile Include="Simulation\Clock.cs" />
     <Compile Include="Network\Sink.cs" />
@@ -68,6 +62,12 @@
     <Compile Include="Network\IArriving.cs" />
     <Compile Include="Network\Router.cs" />
     <Compile Include="Network\ITimed.cs" />
+    <Compile Include="Simulation\Distribution\DeterministicDistribution.cs" />
+    <Compile Include="Simulation\Distribution\ExponentialDistribution.cs" />
+    <Compile Include="Simulation\Distribution\IDistribution.cs" />
+    <Compile Include="Simulation\Distribution\LogNormalDistribtution.cs" />
+    <Compile Include="Simulation\Distribution\NormalDistribution.cs" />
+    <Compile Include="Simulation\Distribution\UniformDistribtution.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />

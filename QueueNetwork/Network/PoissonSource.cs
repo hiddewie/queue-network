@@ -20,11 +20,10 @@ namespace QueueNetwork {
 			nextDeparture = Distribution.NextDouble ();
 
 			Unit unit = new Unit ();
-			unit.ArriveTime = Clock.getTime ();
+			unit.ArriveTime = Clock.GetTime ();
 
 			this.DepartLocation.Arrive (unit);
 		}
-
 	}
 }
 

@@ -3,25 +3,28 @@
 namespace QueueNetwork {
 	public static class EntryPoint {
 		public static void Main () {
-			Console.WriteLine ("Hello World!");
-
 			Network network = new Network ();
 			Source source = new PoissonSource (1.0);
 			Sink sink = new Sink ();
-			source.DepartLocation = sink;
+			SimpleRouter router = new SimpleRouter (sink);
+			source.DepartLocation = router;
 
 			network.Add (source);
 			network.Add (sink);
 
 			Console.WriteLine (network.NextDeparture ());
-			source.Depart ();
 			Clock.advance (network.NextDeparture ());
-			Console.WriteLine (network.NextDeparture ());
 			source.Depart ();
+			Console.WriteLine (String.Format("Clock: {0}, Next departure: {1}", Clock.GetTime(), network.NextDeparture ()));
 			Clock.advance (network.NextDeparture ());
-			Console.WriteLine (network.NextDeparture ());
 			source.Depart ();
+			Console.WriteLine (String.Format("Clock: {0}, Next departure: {1}", Clock.GetTime(), network.NextDeparture ()));
+			Clock.advance (network.NextDeparture ());
+			source.Depart ();
+			Console.WriteLine (String.Format("Clock: {0}, Next departure: {1}", Clock.GetTime(), network.NextDeparture ()));
 
+			Console.WriteLine ();
+			Console.WriteLine ("--- Done ---");
 			Console.ReadKey ();
 		}
 	}

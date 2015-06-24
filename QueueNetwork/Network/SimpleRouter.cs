@@ -2,22 +2,18 @@
 
 namespace QueueNetwork {
 	public class SimpleRouter : Router {
-		private Location routeLocation;
-
-		public SimpleRouter (Location routeLocation) {
-			SetRouteLocation (routeLocation);
+		public IArriving RouteLocation {
+			get;
+			set;
 		}
 
-		public Location GetRouteLocation () {
-			return routeLocation;
-		}
-
-		public void SetRouteLocation (Location routeLocation) {
-			this.routeLocation = routeLocation;
+		public SimpleRouter (IArriving routeLocation) {
+			RouteLocation = routeLocation;
 		}
 
 		public override void Depart () {
-			routeLocation.Arrive (currentUnit);
+			Console.WriteLine(String.Format("Departing from SimpleRouter at time {0}", Clock.GetTime()));
+			RouteLocation.Arrive (currentUnit);
 		}
 	}
 }
