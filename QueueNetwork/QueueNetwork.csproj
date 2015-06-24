@@ -69,6 +69,8 @@
     <Compile Include="Distribution\NormalDistribution.cs" />
     <Compile Include="Distribution\UniformDistribtution.cs" />
     <Compile Include="Distribution\DiscreteDistribution.cs" />
+    <Compile Include="Distribution\UniformDiscreteDistribution.cs" />
+    <Compile Include="Network\QueueLocation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />

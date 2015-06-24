@@ -1,4 +1,5 @@
 ﻿using System;
+using QueueNetwork;
 using QueueNetwork.Distibution;
 
 namespace QueueNetwork {
@@ -7,8 +8,9 @@ namespace QueueNetwork {
 			Network network = new Network ();
 			Source source = new PoissonSource (1.0);
 			Sink sink = new Sink ();
-			SimpleRouter router = new SimpleRouter (sink);
-			source.DepartLocation = router;
+			QueueLocation queue = new QueueLocation (new ExponentialDistribution(3.0));
+			queue.DepartLocation = sink;
+			source.DepartLocation = queue;
 
 			network.Add (source);
 			network.Add (sink);

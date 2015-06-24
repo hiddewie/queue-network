@@ -5,7 +5,7 @@ namespace QueueNetwork {
 	/**
 	 * A location collects units, and outputs them in a later time
 	 */
-	public abstract class Location : IDeparting, IArriving {
+	public abstract class Location : IDeparting, IArriving, ITimed {
 		public IArriving DepartLocation {
 			get;
 			set;
