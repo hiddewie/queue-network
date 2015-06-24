@@ -71,6 +71,9 @@
     <Compile Include="Distribution\DiscreteDistribution.cs" />
     <Compile Include="Distribution\UniformDiscreteDistribution.cs" />
     <Compile Include="Network\QueueLocation.cs" />
+    <Compile Include="Simulation\SimulationGoal\ISimluationGoal.cs" />
+    <Compile Include="Simulation\SimulationGoal\NumberSimulationGoal.cs" />
+    <Compile Include="Simulation\SimulationGoal\TimeSimulationGoal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
