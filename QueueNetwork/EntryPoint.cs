@@ -1,4 +1,5 @@
 ﻿using System;
+using QueueNetwork.Distibution;
 
 namespace QueueNetwork {
 	public static class EntryPoint {

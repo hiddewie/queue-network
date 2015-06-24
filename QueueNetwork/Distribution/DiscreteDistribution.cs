@@ -19,7 +19,7 @@ namespace QueueNetwork.Distibution {
 			double random = distribution.NextRandom ();
 			double d = 0.0;
 			int i = 0;
-			while (random < d + p[i]) {
+			while (random > d + p[i]) {
 				d += p [i];
 				i += 1;
 			}
