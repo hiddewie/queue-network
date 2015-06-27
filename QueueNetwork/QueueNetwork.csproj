@@ -76,12 +76,16 @@
     <Compile Include="Network\IArriving.cs" />
     <Compile Include="Network\ArriveEventArgs.cs" />
     <Compile Include="Network\DepartEventArgs.cs" />
+    <Compile Include="Simulation\NetworkSimulation.cs" />
+    <Compile Include="Network\Printer\INetworkPrinter.cs" />
+    <Compile Include="Network\Printer\FilePrinter.cs" />
+    <Compile Include="Network\Printer\ConsolePrinter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
     <Folder Include="Simulation\" />
-    <Folder Include="Test\" />
     <Folder Include="Simulation\SimulationGoal\" />
+    <Folder Include="Network\Printer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

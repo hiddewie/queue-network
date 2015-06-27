@@ -1,9 +1,10 @@
 ﻿using System;
 
-namespace QueueNetwork {
-	public class INetworkPrinter {
-		public INetworkPrinter () {
-		}
+using QueueNetwork;
+
+namespace QueueNetwork.Printer {
+	public interface INetworkPrinter {
+		void PrintNetwork(Network network);
 	}
 }
 

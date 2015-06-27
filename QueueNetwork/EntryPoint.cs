@@ -1,6 +1,8 @@
 ﻿using System;
 using QueueNetwork;
 using QueueNetwork.Distibution;
+using QueueNetwork.Simulation;
+using QueueNetwork.Simulation.Result;
 
 namespace QueueNetwork {
 	public static class EntryPoint {
@@ -16,6 +18,9 @@ namespace QueueNetwork {
 
 			network.Add (source);
 			network.Add (sink);
+
+			NetworkSimulation sim = new NetworkSimulation (network);
+			SimulationResult[] results = sim.Simulate(new NumberSimulationGoal ());
 
 			Console.WriteLine (network.NextDeparture ());
 			Clock.advance (network.NextDeparture ());
