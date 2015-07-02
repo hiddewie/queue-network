@@ -17,7 +17,7 @@ namespace QueueNetwork {
 		public bool Active {
 			set {
 				if (value && HasUnits ()) {
-					nextDeparture = distribution.NextRandom ();
+					nextDeparture = Clock.GetTime() + distribution.NextRandom ();
 				} else {
 					nextDeparture = Constants.INF;
 				}
@@ -31,10 +31,10 @@ namespace QueueNetwork {
 
 		public override void Arrive (Unit unit, Component source) {
 			CallPreArrive (new ArriveEvent ());
-			queue.Enqueue (unit);
-			if (HasUnits () && active) {
+			if (!HasUnits() && active) {
 				nextDeparture = Clock.GetTime() + distribution.NextRandom ();
 			}
+			queue.Enqueue (unit);
 			CallPostArrive (new ArriveEvent ());
 		}
 
@@ -51,8 +51,15 @@ namespace QueueNetwork {
 					throw new Exception ("Departing while no units in queue");
 				}
 				CallPreEvent (new DepartEvent (this, DepartLocation));
+
+				Unit unit = (Unit)queue.Dequeue ();
+				if (HasUnits ()) {
+					nextDeparture = Clock.GetTime () + distribution.NextRandom ();
+				} else {
+					nextDeparture = Constants.INF;
+				}
 				CallPostEvent (new DepartEvent (this, DepartLocation));
-				DepartLocation.Arrive ((Unit)queue.Dequeue (), this);
+				DepartLocation.Arrive (unit, this);
 
 				return;
 			}
