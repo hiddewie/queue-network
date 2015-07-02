@@ -84,6 +84,9 @@
     <Compile Include="Simulation\SimulationMethod\ReplicationMethod.cs" />
     <Compile Include="Simulation\SimulationMethod\RegenerativeMethod.cs" />
     <Compile Include="Simulation\SimulationMethod\BatchMeansMethod.cs" />
+    <Compile Include="Network\Trigger\Trigger.cs" />
+    <Compile Include="Network\Trigger\DepartTrigger.cs" />
+    <Compile Include="Network\Trigger\NetworkUpdateTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
@@ -91,6 +94,7 @@
     <Folder Include="Simulation\SimulationGoal\" />
     <Folder Include="Network\Printer\" />
     <Folder Include="Network\Event\" />
+    <Folder Include="Network\Trigger\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

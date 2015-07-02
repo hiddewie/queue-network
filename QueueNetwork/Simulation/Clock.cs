@@ -12,7 +12,7 @@ namespace QueueNetwork {
 		}
 
 		public static void AdvanceTo (double t) {
-			if (time < t) {
+			if (t < time) {
 				throw new Exception (String.Format("Invalid time {0}, while clock time is {1}", time, t));
 			}
 			time = t;

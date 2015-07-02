@@ -5,7 +5,7 @@ namespace QueueNetwork {
 	/**
 	 * A location collects units, and outputs them in a later time
 	 */
-	public abstract class Location : IDeparting, IArriving, ITimed {
+	public abstract class Location : Component, IDeparting, IArriving, ITimed {
 		public event EventHandler PreArrive;
 		public event EventHandler PostArrive;
 		public event EventHandler PreEvent;
@@ -37,9 +37,9 @@ namespace QueueNetwork {
 			get;
 			set;
 		}
-		public abstract Dictionary<Event, double> NextEvents();
-		public abstract void Trigger(Event e);
-		public abstract void Arrive(Unit unit);
+		public abstract Dictionary<Trigger, double> NextTriggers();
+		public abstract void Trigger(Trigger t);
+		public abstract void Arrive(Unit unit, Component source);
 		public abstract bool HasUnits();
 	}
 }

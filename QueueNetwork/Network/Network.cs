@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace QueueNetwork {
-	public class Network : ITimed {
+	public class Network : Component, ITimed {
 		public event EventHandler PreEvent;
 		public event EventHandler PostEvent;
 
@@ -12,8 +12,6 @@ namespace QueueNetwork {
 		private List<Source> sources = new List<Source>();
 
 		private double networkEventTime = Constants.INF;
-		private ITimed nextEventComponent;
-		private Event nextEvent;
 
 		public void CallPreEvent (Event eventArgs) {
 			if (PreEvent != null) {
@@ -41,25 +39,34 @@ namespace QueueNetwork {
 			}
 		}
 
-		public Dictionary<Event, double> NextEvents () {
+		public Dictionary<Trigger, double> NextTriggers () {
 			networkEventTime = Constants.INF;
+			ITimed nextComponent = null;
+			Trigger nextTrigger = null;
+
+
 			foreach (ITimed c in timedComponents) {
-				foreach (KeyValuePair<Event, double> entry in c.NextEvents()) {
+				foreach (KeyValuePair<Trigger, double> entry in c.NextTriggers()) {
 					if (entry.Value < networkEventTime) {
 						networkEventTime = entry.Value;
-						nextEvent = entry.Key;
-						nextEventComponent = c;
+						nextTrigger = entry.Key;
+						nextComponent = c;
 					}
 				}
 			}
-			return new Dictionary<Event, double> {
-				{new NetworkUpdateEvent(), networkEventTime}
+			return new Dictionary<Trigger, double> {
+				{new NetworkUpdateTrigger(nextComponent, nextTrigger), networkEventTime}
 			};
 		}
 
-		public void Trigger (Event e) {
-			if (e is NetworkUpdateEvent) {
-				// TODO: Update 
+		public void Trigger (Trigger t) {
+			if (t is NetworkUpdateTrigger) {
+				NetworkUpdateTrigger nue = t as NetworkUpdateTrigger;
+
+				CallPreEvent (new NetworkUpdateEvent (nue.OriginalTrigger));
+				CallPostEvent (new NetworkUpdateEvent (nue.OriginalTrigger));
+				nue.Target.Trigger(nue.OriginalTrigger);
+
 				return;
 			}
 

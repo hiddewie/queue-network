@@ -29,7 +29,7 @@ namespace QueueNetwork {
 			}
 		}
 
-		public override void Arrive (Unit unit) {
+		public override void Arrive (Unit unit, Component source) {
 			CallPreArrive (new ArriveEvent ());
 			if (!HasUnits () && active) {
 				nextDeparture = distribution.NextRandom ();
@@ -42,17 +42,17 @@ namespace QueueNetwork {
 			return queue.Count > 0;
 		}
 
-		public override void Trigger (Event e) {
-			if (e is DepartEvent) {
+		public override void Trigger (Trigger t) {
+			if (t is DepartTrigger) {
 				if (!active) {
 					throw new Exception ("Departing while queue is not active");
 				}
 				if (!HasUnits ()) {
 					throw new Exception ("Departing while no units in queue");
 				}
-				CallPreEvent (new DepartEvent ());
-				DepartLocation.Arrive ((Unit)queue.Dequeue ());
-				CallPostEvent (new DepartEvent ());
+				CallPreEvent (new DepartEvent (this, DepartLocation));
+				CallPostEvent (new DepartEvent (this, DepartLocation));
+				DepartLocation.Arrive ((Unit)queue.Dequeue (), this);
 
 				return;
 			}
@@ -60,9 +60,9 @@ namespace QueueNetwork {
 			throw new UnknownEventException ();
 		}
 
-		public override Dictionary<Event, double> NextEvents () {
-			return new Dictionary<Event, double> {
-				{ new DepartEvent (), nextDeparture }
+		public override Dictionary<Trigger, double> NextTriggers () {
+			return new Dictionary<Trigger, double> {
+				{ new DepartTrigger (this), nextDeparture }
 			};
 		}
 	}

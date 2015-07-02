@@ -19,26 +19,26 @@ namespace QueueNetwork.Simulation {
 				sink.PostArrive += simulationMethod.Goal.OnSinkArrive;
 			}
 
-			KeyValuePair<Event, double> nextEvent;
+			KeyValuePair<Trigger, double> nextTrigger;
 			do {
-				nextEvent = DetermineNextEvent(network.NextEvents());
-				Clock.AdvanceTo(nextEvent.Value);
-				network.Trigger(nextEvent.Key);
+				nextTrigger = DetermineNextTrigger(network.NextTriggers());
+				Clock.AdvanceTo(nextTrigger.Value);
+				network.Trigger(nextTrigger.Key);
 			} while (!simulationMethod.Goal.Finished ());
 		}
 
-		private KeyValuePair<Event, double> DetermineNextEvent(Dictionary<Event, double> events) {
+		private KeyValuePair<Trigger, double> DetermineNextTrigger(Dictionary<Trigger, double> events) {
 			if (events.Count == 0) {
-				throw new Exception ("Cannot deptermine next event of empty event list");
+				throw new Exception ("Cannot deptermine next trigger of empty event list");
 			}
-			KeyValuePair<Event, double> ret = new KeyValuePair<Event, double>(null, Constants.INF);
-			foreach (KeyValuePair<Event, double> item in events) {
+			KeyValuePair<Trigger, double> ret = new KeyValuePair<Trigger, double>(null, Constants.INF);
+			foreach (KeyValuePair<Trigger, double> item in events) {
 				if (item.Value < ret.Value) {
 					ret = item;
 				}
 			}
 			if (ret.Value == Constants.INF) {
-				throw new Exception ("Infinite event found");
+				throw new Exception ("Infinite trigger found");
 			}
 			return ret;
 		}

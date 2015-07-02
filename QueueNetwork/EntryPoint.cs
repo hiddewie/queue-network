@@ -28,6 +28,8 @@ namespace QueueNetwork {
 
 			queue.PreArrive += (object sender, EventArgs e) => Console.WriteLine("QUEUE TEST@!");
 
+			network.PreEvent += (object sender, EventArgs e) => Console.WriteLine (String.Format("sender {0}, event {1}", sender, e));
+
 			network.Add (source);
 			network.Add (sink);
 

@@ -22,15 +22,18 @@ namespace QueueNetwork {
 			return RouteLocations;
 		}
 
-		public override void Trigger (Event e) {
-			if (e is DepartEvent) {
+		public override void Trigger (Trigger t) {
+			if (t is DepartTrigger) {
 				if (RouteLocations.Count == 0) {
 					throw new Exception ("No route locations, but receiving unit");
 				}
-				CallPreEvent (new DepartEvent());
-				RouteLocations [distribution.NextRandom ()].Arrive (currentUnit);
+				IArriving to = RouteLocations [distribution.NextRandom ()];
+
+				CallPreEvent (new DepartEvent(this, to));
+				Unit tempUnit = currentUnit;
 				currentUnit = null;
-				CallPostEvent (new DepartEvent());
+				CallPostEvent (new DepartEvent(this, to));
+				to.Arrive (tempUnit, this);
 				return;
 			}
 			throw new UnknownEventException ();

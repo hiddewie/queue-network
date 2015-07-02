@@ -21,7 +21,7 @@ namespace QueueNetwork {
 			}
 		}
 
-		public void Arrive(Unit unit) {
+		public void Arrive(Unit unit, Component source) {
 			CallPreArrive (new ArriveEvent());
 			unit.SystemDepartTime = Clock.GetTime ();
 			unit.Sink = this;

@@ -6,7 +6,7 @@ namespace QueueNetwork {
 		event EventHandler PostArrive;
 		void CallPreArrive (ArriveEvent eventArgs);
 		void CallPostArrive (ArriveEvent eventArgs);
-		void Arrive (Unit unit);
+		void Arrive (Unit unit, Component source);
 	}
 }
 

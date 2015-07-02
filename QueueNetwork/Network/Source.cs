@@ -27,8 +27,8 @@ namespace QueueNetwork {
 		public Source (Location location) {
 			this.DepartLocation = location;
 		}
-		public abstract Dictionary<Event, double> NextEvents ();
-		public abstract void Trigger (Event e);
+		public abstract Dictionary<Trigger, double> NextTriggers ();
+		public abstract void Trigger (Trigger t);
 	}
 }
 

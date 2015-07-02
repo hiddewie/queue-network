@@ -5,14 +5,14 @@ namespace QueueNetwork {
 	public abstract class Router : Location {
 		protected Unit currentUnit;
 
-		public override void Arrive(Unit unit) {
+		public override void Arrive(Unit unit, Component source) {
 			currentUnit = unit;
-			Trigger (new DepartEvent ());
+			Trigger (new DepartTrigger (this));
 		}
 
-		public override Dictionary<Event, double> NextEvents () {
-			return new Dictionary<Event, double> {
-				{new DepartEvent (), Constants.INF},
+		public override Dictionary<Trigger, double> NextTriggers () {
+			return new Dictionary<Trigger, double> {
+				{new DepartTrigger (this), Constants.INF},
 			};
 		}
 		public override bool HasUnits () {

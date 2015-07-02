@@ -10,26 +10,26 @@ namespace QueueNetwork {
 
 		public PoissonSource (double lambda) {
 			Distribution = new ExponentialDistribution(lambda);
-			nextDeparture = Distribution.NextRandom ();
+			nextDeparture = Clock.GetTime() + Distribution.NextRandom ();
 		}
 
-		public override Dictionary<Event, double> NextEvents() {
-			return new Dictionary<Event, double> {
-				{new DepartEvent(), nextDeparture}
+		public override Dictionary<Trigger, double> NextTriggers() {
+			return new Dictionary<Trigger, double> {
+				{new DepartTrigger(this), nextDeparture}
 			};
 		}
 
-		public override void Trigger (Event e) {
-			if (e is DepartEvent) {
-				CallPreEvent (new DepartEvent ());
-				nextDeparture = Distribution.NextRandom ();
+		public override void Trigger (Trigger t) {
+			if (t is DepartTrigger) {
+				CallPreEvent (new DepartEvent (this, DepartLocation));
+				nextDeparture = Clock.GetTime() + Distribution.NextRandom ();
 
 				Unit unit = new Unit ();
 				unit.SystemArriveTime = Clock.GetTime ();
 				unit.Source = this;
 
-				this.DepartLocation.Arrive (unit);
-				CallPostEvent (new DepartEvent ());
+				CallPostEvent (new DepartEvent (this, DepartLocation));
+				DepartLocation.Arrive (unit, this);
 
 				return;
 			}

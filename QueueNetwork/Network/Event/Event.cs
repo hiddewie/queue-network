@@ -2,7 +2,7 @@
 
 namespace QueueNetwork {
 	public abstract class Event : EventArgs {
-		public Network Owner {
+		public Network Network {
 			get;
 			set;
 		}

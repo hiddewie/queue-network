@@ -2,7 +2,12 @@
 
 namespace QueueNetwork {
 	public class NetworkUpdateEvent : Event {
-		public NetworkUpdateEvent () {
+		public Trigger ComponentTrigger {
+			get;
+			protected set;
+		}
+		public NetworkUpdateEvent (Trigger componentTrigger) {
+			this.ComponentTrigger = componentTrigger;
 		}
 	}
 }

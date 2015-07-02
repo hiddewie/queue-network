@@ -8,8 +8,8 @@ namespace QueueNetwork {
 		void CallPreEvent (Event eventArgs);
 		void CallPostEvent (Event eventArgs);
 
-		Dictionary<Event, double> NextEvents();
-		void Trigger(Event e);
+		Dictionary<Trigger, double> NextTriggers();
+		void Trigger(Trigger t);
 	}
 }
 
