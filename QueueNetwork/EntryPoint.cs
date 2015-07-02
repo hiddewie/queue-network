@@ -23,15 +23,20 @@ namespace QueueNetwork {
 			Source source = new PoissonSource (1.0);
 			Sink sink = new Sink ();
 			QueueLocation queue = new QueueLocation (new ExponentialDistribution(3.0));
+			queue.PostArrive += (object sender, EventArgs e) => Console.WriteLine(String.Format("Post arrive {0}", queue.HasUnits()));
+			queue.PostEvent += (object sender, EventArgs e) => Console.WriteLine("Post event");
 			queue.DepartLocation = sink;
 			source.DepartLocation = queue;
 
-			queue.PreArrive += (object sender, EventArgs e) => Console.WriteLine("QUEUE TEST@!");
+			//queue.PreArrive += (object sender, EventArgs e) => Console.WriteLine("QUEUE TEST@!");
 
-			network.PreEvent += (object sender, EventArgs e) => Console.WriteLine (String.Format("sender {0}, event {1}", sender, e));
+			//network.PreEvent += (object sender, EventArgs e) => Console.WriteLine (String.Format("sender {0}, event {1}", sender, e));
+
+			sink.PreArrive += (object sender, EventArgs e) => Console.WriteLine(sink.Arrived);
 
 			network.Add (source);
 			network.Add (sink);
+			network.Add (queue);
 
 			ResultGatherer resultGatherer = new ResultGatherer ();
 

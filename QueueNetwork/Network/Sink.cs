@@ -5,9 +5,13 @@ namespace QueueNetwork {
 		public event EventHandler PreArrive;
 		public event EventHandler PostArrive;
 
-		private int arrived = 0;
+		public int Arrived {
+			get;
+			protected set;
+		}
 
 		public Sink () {
+			Arrived = 0;
 		}
 
 		public void CallPreArrive (ArriveEvent eventArgs) {
@@ -25,13 +29,9 @@ namespace QueueNetwork {
 			CallPreArrive (new ArriveEvent());
 			unit.SystemDepartTime = Clock.GetTime ();
 			unit.Sink = this;
-			arrived++;
+			Arrived++;
 			Console.WriteLine (String.Format(unit + " has arrived in sink at time {0}. The unit traveled from {1} to {2}", Clock.GetTime(), unit.Source, unit.Sink));
 			CallPostArrive (new ArriveEvent());
-		}
-
-		public int Arrived () {
-			return arrived;
 		}
 	}
 }

@@ -31,10 +31,10 @@ namespace QueueNetwork {
 
 		public override void Arrive (Unit unit, Component source) {
 			CallPreArrive (new ArriveEvent ());
-			if (!HasUnits () && active) {
-				nextDeparture = distribution.NextRandom ();
-			}
 			queue.Enqueue (unit);
+			if (HasUnits () && active) {
+				nextDeparture = Clock.GetTime() + distribution.NextRandom ();
+			}
 			CallPostArrive (new ArriveEvent ());
 		}
 
