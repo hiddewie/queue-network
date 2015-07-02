@@ -1,12 +1,16 @@
 ﻿using System;
 
 namespace QueueNetwork.Simulation {
-	public class TimeSimulationGoal : ISimluationGoal {
+	public class TimeSimulationGoal : ISimulationGoal {
 		private double time, warmUp;
 		
 		public TimeSimulationGoal (double time, double warmUp) {
 			this.time = time;
 			this.warmUp = warmUp;
+		}
+
+		public void OnSinkArrive(object sender, EventArgs e) {
+
 		}
 
 		public bool Finished () {

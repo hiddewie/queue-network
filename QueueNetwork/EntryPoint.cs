@@ -1,11 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using QueueNetwork;
 using QueueNetwork.Distibution;
 using QueueNetwork.Simulation;
 using QueueNetwork.Simulation.Result;
+using QueueNetwork.Simulation.Method;
 
 namespace QueueNetwork {
+	public class ResultGatherer : IResultGatherer {
+		public List<SimulationResult> GetResults() {
+			return new List<SimulationResult> ();
+		}
+
+		public Interval<SimulationResult> GetConfidenceInterval(double confidencePercentage) {
+			return new Interval<SimulationResult> (new SimulationResult(), new SimulationResult() );
+		}
+	}
 	public static class EntryPoint {
+		
 		public static void Main () {
 			Network network = new Network ();
 			Source source = new PoissonSource (1.0);
@@ -19,25 +31,12 @@ namespace QueueNetwork {
 			network.Add (source);
 			network.Add (sink);
 
-			NetworkSimulation sim = new NetworkSimulation (network);
-			SimulationResult[] results = sim.Simulate(new NumberSimulationGoal ());
+			ResultGatherer resultGatherer = new ResultGatherer ();
 
-			Console.WriteLine (network.NextDeparture ());
-			Clock.advance (network.NextDeparture ());
-			source.Depart ();
-			queue.Depart ();
-			Console.WriteLine (String.Format("Clock: {0}, Next departure: {1}", Clock.GetTime(), network.NextDeparture ()));
-			Clock.advance (network.NextDeparture ());
-			source.Depart ();
-			source.Depart ();
-			source.Depart ();
-			queue.Depart ();
-			Console.WriteLine (String.Format("Clock: {0}, Next departure: {1}", Clock.GetTime(), network.NextDeparture ()));
-			Clock.advance (network.NextDeparture ());
-			source.Depart ();
-			queue.Depart ();
-			queue.Depart ();
-			Console.WriteLine (String.Format("Clock: {0}, Next departure: {1}", Clock.GetTime(), network.NextDeparture ()));
+			NetworkSimulation sim = new NetworkSimulation (network);
+			sim.Simulate(new ReplicationMethod (resultGatherer, 100, 10));
+			List<SimulationResult> results = resultGatherer.GetResults ();
+			Interval<SimulationResult> confidenceInterval = resultGatherer.GetConfidenceInterval (0.95);
 
 			Console.WriteLine ();
 			Console.WriteLine ("--- Done ---");

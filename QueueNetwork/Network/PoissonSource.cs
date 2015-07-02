@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using QueueNetwork.Distibution;
 
@@ -12,20 +13,28 @@ namespace QueueNetwork {
 			nextDeparture = Distribution.NextRandom ();
 		}
 
-		public override double NextDeparture() {
-			return nextDeparture;
+		public override Dictionary<Event, double> NextEvents() {
+			return new Dictionary<Event, double> {
+				{new DepartEvent(), nextDeparture}
+			};
 		}
 
-		public override void Depart () {
-			CallPreDepart (new DepartEventArgs ());
-			nextDeparture = Distribution.NextRandom ();
+		public override void Trigger (Event e) {
+			if (e is DepartEvent) {
+				CallPreEvent (new DepartEvent ());
+				nextDeparture = Distribution.NextRandom ();
 
-			Unit unit = new Unit ();
-			unit.SystemArriveTime = Clock.GetTime ();
-			unit.Source = this;
+				Unit unit = new Unit ();
+				unit.SystemArriveTime = Clock.GetTime ();
+				unit.Source = this;
 
-			this.DepartLocation.Arrive (unit);
-			CallPostDepart (new DepartEventArgs ());
+				this.DepartLocation.Arrive (unit);
+				CallPostEvent (new DepartEvent ());
+
+				return;
+			}
+
+			throw new UnknownEventException ();
 		}
 	}
 }

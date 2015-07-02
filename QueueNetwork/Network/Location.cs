@@ -8,28 +8,28 @@ namespace QueueNetwork {
 	public abstract class Location : IDeparting, IArriving, ITimed {
 		public event EventHandler PreArrive;
 		public event EventHandler PostArrive;
-		public event EventHandler PreDepart;
-		public event EventHandler PostDepart;
+		public event EventHandler PreEvent;
+		public event EventHandler PostEvent;
 
-		public void CallPreArrive (ArriveEventArgs eventArgs) {
+		public void CallPreArrive (ArriveEvent eventArgs) {
 			if (PreArrive != null) {
 				PreArrive (this, eventArgs);
 			}
 		}
-		public void CallPostArrive (ArriveEventArgs eventArgs) {
+		public void CallPostArrive (ArriveEvent eventArgs) {
 			if (PostArrive != null) {
 				PostArrive (this, eventArgs);
 			}
 		}
 
-		public void CallPreDepart (DepartEventArgs eventArgs) {
-			if (PreDepart != null) {
-				PreDepart (this, eventArgs);
+		public void CallPreEvent (Event eventArgs) {
+			if (PreEvent != null) {
+				PreEvent (this, eventArgs);
 			}
 		}
-		public void CallPostDepart (DepartEventArgs eventArgs) {
-			if (PostDepart != null) {
-				PostDepart (this, eventArgs);
+		public void CallPostEvent (Event eventArgs) {
+			if (PostEvent != null) {
+				PostEvent (this, eventArgs);
 			}
 		}
 
@@ -37,8 +37,8 @@ namespace QueueNetwork {
 			get;
 			set;
 		}
-		public abstract void Depart();
-		public abstract double NextDeparture();
+		public abstract Dictionary<Event, double> NextEvents();
+		public abstract void Trigger(Event e);
 		public abstract void Arrive(Unit unit);
 		public abstract bool HasUnits();
 	}

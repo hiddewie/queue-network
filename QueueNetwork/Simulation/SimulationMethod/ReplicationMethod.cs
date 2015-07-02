@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using QueueNetwork.Simulation;
 using QueueNetwork.Simulation.Result;
 
-namespace QueueNetwork.Simulation.SimulationMethod {
-	public class ReplicationSimulationMethod : ISimulationMethod {
+namespace QueueNetwork.Simulation.Method {
+	public class ReplicationMethod : SimulationMethod {
 		private int numDelaysRequired, numReplicationsRequired;
 		private int numReplications = 0;
 		private List<SimulationResult> results = new List<SimulationResult> ();
 
-		public ReplicationSimulationMethod(int numDelaysRequired, int numReplicationsRequired) {
+		public ReplicationMethod(IResultGatherer resultGatherer, int numDelaysRequired, int numReplicationsRequired)
+			: base(new NumberSimulationGoal(numReplicationsRequired * numDelaysRequired, 0), resultGatherer) {
 			this.numDelaysRequired = numDelaysRequired;
 			this.numReplicationsRequired = numReplicationsRequired;
 		}

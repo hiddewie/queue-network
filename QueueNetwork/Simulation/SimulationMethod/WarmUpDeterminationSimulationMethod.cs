@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using QueueNetwork.Simulation.Result;
 
-namespace QueueNetwork.Simulation.SimulationMethod {
+namespace QueueNetwork.Simulation.Method {
 	public class WarmUpDeterminationSimulationMethod /*: SimulationMethod*/ {
 		private int numDelaysRequired, numReplicationsRequired, determinationInterval, w;
 		private int numReplications = 0;

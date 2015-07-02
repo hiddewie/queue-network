@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using QueueNetwork.Simulation.Result;
 
-namespace QueueNetwork.Simulation.SimulationMethod {
-	public class BatchMeansSimulationMethod /*: SimulationMethod*/ {
+namespace QueueNetwork.Simulation.Method {
+	public class BatchMeansMethod : SimulationMethod {
 		private double batchLength;
 		private int numBatches, customersPerBatch, l;
 		private bool continueSimulation = true;
@@ -14,7 +14,8 @@ namespace QueueNetwork.Simulation.SimulationMethod {
 		private int queueLengthBatchIndex = 0, delayBatchIndex = 0;
 		private double totalDelays, areaNumInQueue, areaServerStatus;
 
-		public BatchMeansSimulationMethod(int N, int numBatches, double batchLength, int customersPerBatch, int l) {
+		public BatchMeansMethod(IResultGatherer resultGatherer, int N, int numBatches, double batchLength, int customersPerBatch, int l)
+			: base(new NumberSimulationGoal(numBatches * customersPerBatch), resultGatherer) {
 			this.numBatches = numBatches;
 			this.batchLength = batchLength;
 			this.customersPerBatch = customersPerBatch;
@@ -23,7 +24,7 @@ namespace QueueNetwork.Simulation.SimulationMethod {
 
 			results = new SimulationResult[numBatches];
 			for (int i = 0; i < numBatches; i++) {
-				results [i] = new SimulationResult ();
+				results [i] = null; //new SimulationResult ();
 			}
 		}
 
@@ -93,7 +94,7 @@ namespace QueueNetwork.Simulation.SimulationMethod {
 		public Interval<SimulationResult> GetResult (double confidenceIntervalPercentage) {
 			List<SimulationResult> resultsList = new List<SimulationResult> (results);
 			resultsList.RemoveRange (0, l);
-			return ConfidenceInterval.CreateInterval(resultsList, confidenceIntervalPercentage);
+			return SimulationResult.CreateInterval(resultsList, confidenceIntervalPercentage, null);
 		}
 
 		public override string ToString () {

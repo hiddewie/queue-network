@@ -1,23 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QueueNetwork {
 	public abstract class Source : Component, IDeparting {
-		public event EventHandler PreDepart;
-		public event EventHandler PostDepart;
+		public event EventHandler PreEvent;
+		public event EventHandler PostEvent;
 
 		public IArriving DepartLocation {
 			get;
 			set;
 		}
 
-		public void CallPreDepart (DepartEventArgs eventArgs) {
-			if (PreDepart != null) {
-				PreDepart (this, eventArgs);
+		public void CallPreEvent (Event eventArgs) {
+			if (PreEvent != null) {
+				PreEvent (this, eventArgs);
 			}
 		}
-		public void CallPostDepart (DepartEventArgs eventArgs) {
-			if (PostDepart != null) {
-				PostDepart (this, eventArgs);
+		public void CallPostEvent (Event eventArgs) {
+			if (PostEvent != null) {
+				PostEvent (this, eventArgs);
 			}
 		}
 
@@ -26,8 +27,8 @@ namespace QueueNetwork {
 		public Source (Location location) {
 			this.DepartLocation = location;
 		}
-		public abstract double NextDeparture ();
-		public abstract void Depart ();
+		public abstract Dictionary<Event, double> NextEvents ();
+		public abstract void Trigger (Event e);
 	}
 }
 

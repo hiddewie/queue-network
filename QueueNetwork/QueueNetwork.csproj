@@ -35,15 +35,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simulation\SimulationMethod\BatchMeansSimulationMethod.cs" />
-    <Compile Include="Simulation\SimulationMethod\ISimulationMethod.cs" />
-    <Compile Include="Simulation\SimulationMethod\RegenerativeSimulationMethod.cs" />
-    <Compile Include="Simulation\SimulationMethod\ReplicationSimulationMethod.cs" />
     <Compile Include="Simulation\SimulationMethod\WarmUpDeterminationSimulationMethod.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Simulation\Result\ConfidenceInterval.cs" />
     <Compile Include="Simulation\Result\Interval.cs" />
-    <Compile Include="Simulation\Result\ResultGathererInterface.cs" />
     <Compile Include="Simulation\Result\SimulationResult.cs" />
     <Compile Include="Simulation\Result\Quotient.cs" />
     <Compile Include="Simulation\Clock.cs" />
@@ -70,22 +64,33 @@
     <Compile Include="Distribution\DiscreteDistribution.cs" />
     <Compile Include="Distribution\UniformDiscreteDistribution.cs" />
     <Compile Include="Network\QueueLocation.cs" />
-    <Compile Include="Simulation\SimulationGoal\ISimluationGoal.cs" />
     <Compile Include="Simulation\SimulationGoal\NumberSimulationGoal.cs" />
     <Compile Include="Simulation\SimulationGoal\TimeSimulationGoal.cs" />
     <Compile Include="Network\IArriving.cs" />
-    <Compile Include="Network\ArriveEventArgs.cs" />
-    <Compile Include="Network\DepartEventArgs.cs" />
     <Compile Include="Simulation\NetworkSimulation.cs" />
     <Compile Include="Network\Printer\INetworkPrinter.cs" />
     <Compile Include="Network\Printer\FilePrinter.cs" />
     <Compile Include="Network\Printer\ConsolePrinter.cs" />
+    <Compile Include="Network\UnknownEventException.cs" />
+    <Compile Include="Network\Event\Event.cs" />
+    <Compile Include="Network\Event\DepartEvent.cs" />
+    <Compile Include="Network\Event\ArriveEvent.cs" />
+    <Compile Include="Network\Event\NetworkUpdateEvent.cs" />
+    <Compile Include="Simulation\SimulationGoal\ISimulationGoal.cs" />
+    <Compile Include="Simulation\Result\IResultGatherer.cs" />
+    <Compile Include="Simulation\SimulationMethod\SimulationMethod.cs" />
+    <Compile Include="Simulation\SimulationGoal\NumberTimeSimulationGoal.cs" />
+    <Compile Include="Simulation\Result\ResultFactory.cs" />
+    <Compile Include="Simulation\SimulationMethod\ReplicationMethod.cs" />
+    <Compile Include="Simulation\SimulationMethod\RegenerativeMethod.cs" />
+    <Compile Include="Simulation\SimulationMethod\BatchMeansMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
     <Folder Include="Simulation\" />
     <Folder Include="Simulation\SimulationGoal\" />
     <Folder Include="Network\Printer\" />
+    <Folder Include="Network\Event\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

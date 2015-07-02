@@ -2,7 +2,7 @@
 
 namespace QueueNetwork {
 	public class Component {
-		protected Network Parent {
+		public Network Parent {
 			get;
 			set;
 		}

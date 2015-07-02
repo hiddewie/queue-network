@@ -11,10 +11,16 @@ namespace QueueNetwork {
 			RouteLocation = routeLocation;
 		}
 
-		public override void Depart () {
-			CallPreDepart (new DepartEventArgs());
-			RouteLocation.Arrive (currentUnit);
-			CallPostDepart (new DepartEventArgs());
+		public override void Trigger (Event e) {
+			if (e is DepartEvent) {
+				CallPreEvent (new DepartEvent ());
+				RouteLocation.Arrive (currentUnit);
+				CallPostEvent (new DepartEvent ());
+
+				return;
+			}
+
+			throw new UnknownEventException ();
 		}
 	}
 }

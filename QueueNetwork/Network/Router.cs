@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QueueNetwork {
 	public abstract class Router : Location {
@@ -6,11 +7,13 @@ namespace QueueNetwork {
 
 		public override void Arrive(Unit unit) {
 			currentUnit = unit;
-			Depart ();
+			Trigger (new DepartEvent ());
 		}
 
-		public override double NextDeparture () {
-			return Constants.INF;
+		public override Dictionary<Event, double> NextEvents () {
+			return new Dictionary<Event, double> {
+				{new DepartEvent (), Constants.INF},
+			};
 		}
 		public override bool HasUnits () {
 			return false;

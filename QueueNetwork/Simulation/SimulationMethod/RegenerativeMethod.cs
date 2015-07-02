@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using QueueNetwork.Simulation;
 using QueueNetwork.Simulation.Result;
 
-namespace QueueNetwork.Simulation.SimulationMethod {
-	public class RegenerativeSimulationMethod/* : SimulationMethod */{
+namespace QueueNetwork.Simulation.Method {
+	public class RegenerativeMethod : SimulationMethod {
 		private int numRegenerationBatches, regenerationsPerBatch;
 
 		private bool continueSimulation = true;
@@ -15,7 +15,11 @@ namespace QueueNetwork.Simulation.SimulationMethod {
 
 		private double totalDelays, areaNumInQueue, areaServerStatus;
 
-		public RegenerativeSimulationMethod (int N, int numRegenerationBatches, int regenerationsPerBatch) {
+		private IResultGatherer resultGatherer;
+
+		public RegenerativeMethod (IResultGatherer resultGatherer, int N, int numRegenerationBatches, int regenerationsPerBatch)
+			: base(new NumberSimulationGoal(numRegenerationBatches * regenerationsPerBatch), resultGatherer) {
+			this.resultGatherer = resultGatherer;
 			this.N = N;
 			this.numRegenerationBatches = numRegenerationBatches;
 			this.regenerationsPerBatch = regenerationsPerBatch;
@@ -86,7 +90,7 @@ namespace QueueNetwork.Simulation.SimulationMethod {
 		}
 
 		public Interval<SimulationResult> GetResult (double confidenceIntervalPercentage) {
-			return ConfidenceInterval.CreateInterval (results, confidenceIntervalPercentage);
+			return SimulationResult.CreateInterval (resultGatherer.GetResults(), confidenceIntervalPercentage, null);
 		}
 
 		public override string ToString () {
