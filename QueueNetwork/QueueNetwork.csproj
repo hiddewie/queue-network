@@ -87,6 +87,7 @@
     <Compile Include="Network\Trigger\Trigger.cs" />
     <Compile Include="Network\Trigger\DepartTrigger.cs" />
     <Compile Include="Network\Trigger\NetworkUpdateTrigger.cs" />
+    <Compile Include="Network\DistributionSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
