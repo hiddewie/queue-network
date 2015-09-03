@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="QueueNetwork.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Distribution\IDistribution.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Simulation\Result\IResultGatherer.cs">
     <Files>
       <File FileName="Distribution\IDistribution.cs" Line="5" Column="19" />
+      <File FileName="Simulation\Result\IResultGatherer.cs" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

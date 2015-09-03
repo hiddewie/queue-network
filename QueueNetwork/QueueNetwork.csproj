@@ -50,7 +50,6 @@
     <Compile Include="Network\Location.cs" />
     <Compile Include="Simulation\ServerStatus.cs" />
     <Compile Include="Network\IDeparting.cs" />
-    <Compile Include="EntryPoint.cs" />
     <Compile Include="Network\PoissonSource.cs" />
     <Compile Include="Network\Router.cs" />
     <Compile Include="Network\ITimed.cs" />
