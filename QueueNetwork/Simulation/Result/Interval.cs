@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueueNetwork.Simulation.Result {
+namespace QueueNetwork {
 	public class Interval<T> {
 		public Interval (T start, T end) {
 			Start = start;
@@ -8,10 +8,11 @@ namespace QueueNetwork.Simulation.Result {
 		}
 
 		public T Start { get; set; }
+
 		public T End { get; set; }
 
 		public override string ToString () {
-			return string.Format("[{0}, {1}]", Start, End);
+			return string.Format ("[{0}, {1}]", Start, End);
 		}
 	}
 }

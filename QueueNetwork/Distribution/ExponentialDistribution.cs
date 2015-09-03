@@ -1,22 +1,22 @@
 ﻿using System;
 
-namespace QueueNetwork.Distibution {
+namespace QueueNetwork {
 	public class ExponentialDistribution : IDistribution<double> {
 		private static long seed = DateTime.Now.Ticks;
 
 		private readonly double lambda;
 		private Random random;
 
-		public ExponentialDistribution(double lambda, int fixedSeed) {
+		public ExponentialDistribution (double lambda, int fixedSeed) {
 			this.lambda = lambda;
-			random = new Random ((int) fixedSeed);
+			random = new Random ((int)fixedSeed);
 		}
 
-		public ExponentialDistribution(double lambda) {
+		public ExponentialDistribution (double lambda) {
 			this.lambda = lambda;
 
 			seed++;
-			random = new Random ((int) seed);
+			random = new Random ((int)seed);
 		}
 
 		public double NextRandom () {
@@ -32,7 +32,7 @@ namespace QueueNetwork.Distibution {
 		}
 
 		public override string ToString () {
-			return string.Format("E({0:##.00})", lambda);
+			return string.Format ("E({0:##.00})", lambda);
 		}
 	}
 }

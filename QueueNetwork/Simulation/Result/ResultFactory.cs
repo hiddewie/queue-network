@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueueNetwork.Simulation.Result {
+namespace QueueNetwork {
 	public abstract class ResultFactory {
 		public abstract SimulationResult CreateResult ();
 	}

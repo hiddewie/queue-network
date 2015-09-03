@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueueNetwork.Distibution {
+namespace QueueNetwork {
 	public class UniformDiscreteDistribution : IDistribution<int> {
 		private int min, max;
 		private UniformDistribution distribution;

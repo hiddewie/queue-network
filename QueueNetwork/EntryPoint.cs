@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using QueueNetwork;
-using QueueNetwork.Distibution;
-using QueueNetwork.Simulation;
-using QueueNetwork.Simulation.Result;
-using QueueNetwork.Simulation.Method;
 
 namespace QueueNetwork {
 	public class ResultGatherer : IResultGatherer {
+
+		/*public void OnSinkArrive (object sender, A e) {
+			//Console.WriteLine(e.
+		}*/
+
 		public List<SimulationResult> GetResults() {
 			return new List<SimulationResult> ();
 		}
@@ -20,17 +21,12 @@ namespace QueueNetwork {
 		
 		public static void Main () {
 			Network network = new Network ();
-			Source source = new PoissonSource (1.0);
+			Source source = new DistributionSource (new ExponentialDistribution(1.0));
 			Sink sink = new Sink ();
 			QueueLocation queue = new QueueLocation (new ExponentialDistribution(3.0));
 			queue.PostArrive += (object sender, EventArgs e) => Console.WriteLine(String.Format("Post arrive {0}", queue.HasUnits()));
-			queue.PostEvent += (object sender, EventArgs e) => Console.WriteLine("Post event");
 			queue.DepartLocation = sink;
 			source.DepartLocation = queue;
-
-			//queue.PreArrive += (object sender, EventArgs e) => Console.WriteLine("QUEUE TEST@!");
-
-			//network.PreEvent += (object sender, EventArgs e) => Console.WriteLine (String.Format("sender {0}, event {1}", sender, e));
 
 			sink.PreArrive += (object sender, EventArgs e) => Console.WriteLine(sink.Arrived);
 
@@ -40,8 +36,10 @@ namespace QueueNetwork {
 
 			ResultGatherer resultGatherer = new ResultGatherer ();
 
+			//sink.PostArrive += resultGatherer.OnSinkArrive;
+
 			NetworkSimulation sim = new NetworkSimulation (network);
-			sim.Simulate(new ReplicationMethod (resultGatherer, 100, 10));
+			sim.Simulate(new ReplicationMethod (resultGatherer, 15, 3));
 			List<SimulationResult> results = resultGatherer.GetResults ();
 			Interval<SimulationResult> confidenceInterval = resultGatherer.GetConfidenceInterval (0.95);
 

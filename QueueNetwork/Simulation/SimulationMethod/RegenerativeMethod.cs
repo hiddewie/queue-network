@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using QueueNetwork.Simulation;
-using QueueNetwork.Simulation.Result;
+using QueueNetwork;
 
-namespace QueueNetwork.Simulation.Method {
+namespace QueueNetwork {
 	public class RegenerativeMethod : SimulationMethod {
 		private int numRegenerationBatches, regenerationsPerBatch;
 
@@ -18,7 +17,7 @@ namespace QueueNetwork.Simulation.Method {
 		private IResultGatherer resultGatherer;
 
 		public RegenerativeMethod (IResultGatherer resultGatherer, int N, int numRegenerationBatches, int regenerationsPerBatch)
-			: base(new NumberSimulationGoal(numRegenerationBatches * regenerationsPerBatch), resultGatherer) {
+			: base (new NumberSimulationGoal (numRegenerationBatches * regenerationsPerBatch), resultGatherer) {
 			this.resultGatherer = resultGatherer;
 			this.N = N;
 			this.numRegenerationBatches = numRegenerationBatches;
@@ -65,7 +64,7 @@ namespace QueueNetwork.Simulation.Method {
 		public void Process (double simTime, double timeSinceLastProcess, int numCustomersDelayed, ServerStatus[] serverStatus, int numberInQueue, int numRegenerations) {
 			areaNumInQueue += (numberInQueue * timeSinceLastProcess);
 			for (int i = 0; i < N; i++) {
-				if (serverStatus[i] == ServerStatus.BUSY) {
+				if (serverStatus [i] == ServerStatus.BUSY) {
 					areaServerStatus += timeSinceLastProcess;
 				}
 			}
@@ -90,11 +89,11 @@ namespace QueueNetwork.Simulation.Method {
 		}
 
 		public Interval<SimulationResult> GetResult (double confidenceIntervalPercentage) {
-			return SimulationResult.CreateInterval (resultGatherer.GetResults(), confidenceIntervalPercentage, null);
+			return SimulationResult.CreateInterval (resultGatherer.GetResults (), confidenceIntervalPercentage, null);
 		}
 
 		public override string ToString () {
-			return string.Format("Regenerative ({0}, {1})", numRegenerationBatches, regenerationsPerBatch);
+			return string.Format ("Regenerative ({0}, {1})", numRegenerationBatches, regenerationsPerBatch);
 		}
 	}
 }

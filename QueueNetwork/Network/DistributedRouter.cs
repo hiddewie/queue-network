@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using QueueNetwork.Distibution;
+using QueueNetwork;
 
 namespace QueueNetwork {
 	public class DistributedRouter : Router {
-		private List<IArriving> RouteLocations = new List<IArriving>();
+		private List<IArriving> RouteLocations = new List<IArriving> ();
 		private UniformDiscreteDistribution distribution;
 
 		public DistributedRouter (List<IArriving> routeLocations) {
@@ -18,6 +18,7 @@ namespace QueueNetwork {
 			RouteLocations.Add (routeLocation);
 			distribution = new UniformDiscreteDistribution (0, RouteLocations.Count - 1);
 		}
+
 		public List<IArriving> GetRouteLocations () {
 			return RouteLocations;
 		}
@@ -29,10 +30,10 @@ namespace QueueNetwork {
 				}
 				IArriving to = RouteLocations [distribution.NextRandom ()];
 
-				CallPreEvent (new DepartEvent(this, to));
+				CallPreEvent (new DepartEvent (this, to));
 				Unit tempUnit = currentUnit;
 				currentUnit = null;
-				CallPostEvent (new DepartEvent(this, to));
+				CallPostEvent (new DepartEvent (this, to));
 				to.Arrive (tempUnit, this);
 				return;
 			}

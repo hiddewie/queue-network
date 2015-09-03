@@ -1,11 +1,8 @@
 ﻿<Properties StartupItem="QueueNetwork.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Network\PoissonSource.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Distribution\IDistribution.cs">
     <Files>
-      <File FileName="Network\Source.cs" Line="1" Column="1" />
-      <File FileName="Network\PoissonSource.cs" Line="9" Column="66" />
-      <File FileName="Network\DistributedRouter.cs" Line="1" Column="1" />
-      <File FileName="Network\DistributionSource.cs" Line="42" Column="1" />
+      <File FileName="Distribution\IDistribution.cs" Line="5" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -6,6 +6,7 @@ namespace QueueNetwork {
 			get;
 			protected set;
 		}
+
 		public Trigger (ITimed target) {
 			this.Target = target;
 		}

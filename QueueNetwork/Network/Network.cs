@@ -6,10 +6,10 @@ namespace QueueNetwork {
 		public event EventHandler PreEvent;
 		public event EventHandler PostEvent;
 
-		private List<Component> components = new List<Component>();
-		private List<ITimed> timedComponents = new List<ITimed>();
-		private List<Sink> sinks = new List<Sink>();
-		private List<Source> sources = new List<Source>();
+		private List<Component> components = new List<Component> ();
+		private List<ITimed> timedComponents = new List<ITimed> ();
+		private List<Sink> sinks = new List<Sink> ();
+		private List<Source> sources = new List<Source> ();
 
 		private double networkEventTime = Constants.INF;
 
@@ -18,13 +18,14 @@ namespace QueueNetwork {
 				PreEvent (this, eventArgs);
 			}
 		}
+
 		public void CallPostEvent (Event eventArgs) {
 			if (PostEvent != null) {
 				PostEvent (this, eventArgs);
 			}
 		}
 
-		public void Add(Component component) {
+		public void Add (Component component) {
 			component.Parent = this;
 
 			components.Add (component);
@@ -55,7 +56,7 @@ namespace QueueNetwork {
 				}
 			}
 			return new Dictionary<Trigger, double> {
-				{new NetworkUpdateTrigger(nextComponent, nextTrigger), networkEventTime}
+				{ new NetworkUpdateTrigger (nextComponent, nextTrigger), networkEventTime }
 			};
 		}
 
@@ -65,7 +66,7 @@ namespace QueueNetwork {
 
 				CallPreEvent (new NetworkUpdateEvent (nue.OriginalTrigger));
 				CallPostEvent (new NetworkUpdateEvent (nue.OriginalTrigger));
-				nue.Target.Trigger(nue.OriginalTrigger);
+				nue.Target.Trigger (nue.OriginalTrigger);
 
 				return;
 			}

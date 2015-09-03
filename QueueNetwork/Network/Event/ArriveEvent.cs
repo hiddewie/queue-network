@@ -6,6 +6,7 @@ namespace QueueNetwork {
 			get;
 			private set;
 		}
+
 		public ArriveEvent () {
 		}
 	}

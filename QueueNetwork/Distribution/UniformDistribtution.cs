@@ -1,25 +1,25 @@
 ﻿using System;
 
-namespace QueueNetwork.Distibution {
-	public class UniformDistribution : IDistribution<double>  {
+namespace QueueNetwork {
+	public class UniformDistribution : IDistribution<double> {
 		private static long seed = DateTime.Now.Ticks;
 
 		private readonly double min, max;
 		private Random random;
 
-		public UniformDistribution(double min, double max, int fixedSeed) {
+		public UniformDistribution (double min, double max, int fixedSeed) {
 			this.min = min;
 			this.max = max;
 
-			random = new Random ((int) fixedSeed);
+			random = new Random ((int)fixedSeed);
 		}
 
-		public UniformDistribution(double min, double max) {
+		public UniformDistribution (double min, double max) {
 			this.min = min;
 			this.max = max;
 
 			seed++;
-			random = new Random ((int) seed);
+			random = new Random ((int)seed);
 		}
 
 		public double NextRandom () {
@@ -30,7 +30,7 @@ namespace QueueNetwork.Distibution {
 			return (max + min) / 2.0;
 		}
 
-		public double Cdf(double x) {
+		public double Cdf (double x) {
 			if (x < min) {
 				return 0.0;
 			} else if (x > max) {
@@ -41,7 +41,7 @@ namespace QueueNetwork.Distibution {
 		}
 
 		public override string ToString () {
-			return string.Format("U({0:##.00}, {1:##.00})", min, max);
+			return string.Format ("U({0:##.00}, {1:##.00})", min, max);
 		}
 	}
 }

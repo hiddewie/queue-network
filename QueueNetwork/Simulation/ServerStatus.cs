@@ -2,7 +2,8 @@
 
 namespace QueueNetwork {
 	public enum ServerStatus {
-		BUSY, CLEAR
+		BUSY,
+		CLEAR
 	}
 }
 

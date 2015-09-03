@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using QueueNetwork.Distibution;
+using QueueNetwork;
 
 namespace QueueNetwork {
 	public class QueueLocation : Location {
 		private IDistribution<double> distribution;
-		private Queue queue = new Queue();
+		private Queue queue = new Queue ();
 		private double nextDeparture = Constants.INF;
 
 		public QueueLocation (IDistribution<double> distribution) {
@@ -14,10 +14,11 @@ namespace QueueNetwork {
 		}
 
 		private bool active = true;
+
 		public bool Active {
 			set {
 				if (value && HasUnits ()) {
-					nextDeparture = Clock.GetTime() + distribution.NextRandom ();
+					nextDeparture = Clock.GetTime () + distribution.NextRandom ();
 				} else {
 					nextDeparture = Constants.INF;
 				}
@@ -31,8 +32,8 @@ namespace QueueNetwork {
 
 		public override void Arrive (Unit unit, Component source) {
 			CallPreArrive (new ArriveEvent ());
-			if (!HasUnits() && active) {
-				nextDeparture = Clock.GetTime() + distribution.NextRandom ();
+			if (!HasUnits () && active) {
+				nextDeparture = Clock.GetTime () + distribution.NextRandom ();
 			}
 			queue.Enqueue (unit);
 			CallPostArrive (new ArriveEvent ());
@@ -40,6 +41,10 @@ namespace QueueNetwork {
 
 		public override bool HasUnits () {
 			return queue.Count > 0;
+		}
+
+		public int NumUnits () {
+			return queue.Count;
 		}
 
 		public override void Trigger (Trigger t) {

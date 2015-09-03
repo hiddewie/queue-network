@@ -7,7 +7,7 @@ namespace QueueNetwork {
 			protected set;
 		}
 
-		public NetworkUpdateTrigger (ITimed target, Trigger originalTrigger) : base(target) {
+		public NetworkUpdateTrigger (ITimed target, Trigger originalTrigger) : base (target) {
 			this.OriginalTrigger = originalTrigger;
 		}
 	}

@@ -1,10 +1,12 @@
 ﻿using System;
 
-namespace QueueNetwork.Distibution {
+namespace QueueNetwork {
 	public interface IDistribution<T> {
 		T NextRandom ();
+
 		double Expectation ();
-		double Cdf(T x);
+
+		double Cdf (T x);
 	}
 }
 

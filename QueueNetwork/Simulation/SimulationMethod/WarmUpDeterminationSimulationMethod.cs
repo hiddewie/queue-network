@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using QueueNetwork.Simulation.Result;
+using QueueNetwork;
 
-namespace QueueNetwork.Simulation.Method {
-	public class WarmUpDeterminationSimulationMethod /*: SimulationMethod*/ {
+namespace QueueNetwork {
+	public class WarmUpDeterminationSimulationMethod {
+		/*: SimulationMethod*/
 		private int numDelaysRequired, numReplicationsRequired, determinationInterval, w;
 		private int numReplications = 0;
 		private double[,] results;
 		private int foundL = 0;
 
-		public WarmUpDeterminationSimulationMethod(int numDelaysRequired, int numReplicationsRequired, int determinationInterval, int w) {
+		public WarmUpDeterminationSimulationMethod (int numDelaysRequired, int numReplicationsRequired, int determinationInterval, int w) {
 			this.numDelaysRequired = numDelaysRequired;
 			this.numReplicationsRequired = numReplicationsRequired;
 			this.determinationInterval = determinationInterval;
@@ -64,7 +65,7 @@ namespace QueueNetwork.Simulation.Method {
 
 			double[,] averageResults = new double[n, m];
 			for (int i = 0; i < n; i++) {
-				averageResults [i, 0] = results[i, 0];
+				averageResults [i, 0] = results [i, 0];
 				for (int j = 1; j < m; j++) {
 					averageResults [i, j] = averageResults [i, j - 1] + results [i, j];
 				}
@@ -76,11 +77,11 @@ namespace QueueNetwork.Simulation.Method {
 			double[] average = new double[m];
 
 			for (int i = 0; i < m; i++) {
-				average[i] = 0.0;
+				average [i] = 0.0;
 				for (int j = 0; j < n; j++) {
-					average[i] += averageResults[j, i];
+					average [i] += averageResults [j, i];
 				}
-				average[i] /= n;
+				average [i] /= n;
 			}
 
 			double[] averageW = new double[m];
@@ -90,7 +91,7 @@ namespace QueueNetwork.Simulation.Method {
 				for (int s = 0; s < 2 * i - 1; s++) {
 					averageW [i] += average [s];
 				}
-				averageW[i] /= (2 * i - 1);
+				averageW [i] /= (2 * i - 1);
 
 				if (determinationInterval > 0 && (i % determinationInterval) == determinationInterval - 1) {
 					Console.WriteLine ("{0}", averageW [i]);
@@ -101,7 +102,7 @@ namespace QueueNetwork.Simulation.Method {
 				for (int s = i - w; s <= i + w; s++) {
 					averageW [i] += average [s];
 				}
-				averageW[i] /= (2 * w + 1);
+				averageW [i] /= (2 * w + 1);
 
 				if (determinationInterval > 0 && (i % determinationInterval) == determinationInterval - 1) {
 					Console.WriteLine ("{0}", averageW [i]);
@@ -125,12 +126,12 @@ namespace QueueNetwork.Simulation.Method {
 			return null;
 		}
 
-		public int GetL() {
+		public int GetL () {
 			return foundL;
 		}
 
 		public override string ToString () {
-			return string.Format("WarmingUpDetermination ({0} replications, {1} delays, determinationInterval = {2}, w = {3})", numReplicationsRequired, numDelaysRequired, determinationInterval, w);
+			return string.Format ("WarmingUpDetermination ({0} replications, {1} delays, determinationInterval = {2}, w = {3})", numReplicationsRequired, numDelaysRequired, determinationInterval, w);
 		}
 	}
 }

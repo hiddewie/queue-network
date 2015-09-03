@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using QueueNetwork.Simulation;
-using QueueNetwork.Simulation.Result;
+using QueueNetwork;
 
-namespace QueueNetwork.Simulation.Method {
+namespace QueueNetwork {
 	public abstract class SimulationMethod {
-		public SimulationMethod(ISimulationGoal goal, IResultGatherer resultGatherer) {
+		public SimulationMethod (ISimulationGoal goal, IResultGatherer resultGatherer) {
 			this.Goal = goal;
 			this.ResultGatherer = resultGatherer;
 		}

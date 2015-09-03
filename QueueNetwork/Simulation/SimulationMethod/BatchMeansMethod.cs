@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using QueueNetwork.Simulation.Result;
+using QueueNetwork;
 
-namespace QueueNetwork.Simulation.Method {
+namespace QueueNetwork {
 	public class BatchMeansMethod : SimulationMethod {
 		private double batchLength;
 		private int numBatches, customersPerBatch, l;
@@ -14,8 +14,8 @@ namespace QueueNetwork.Simulation.Method {
 		private int queueLengthBatchIndex = 0, delayBatchIndex = 0;
 		private double totalDelays, areaNumInQueue, areaServerStatus;
 
-		public BatchMeansMethod(IResultGatherer resultGatherer, int N, int numBatches, double batchLength, int customersPerBatch, int l)
-			: base(new NumberSimulationGoal(numBatches * customersPerBatch), resultGatherer) {
+		public BatchMeansMethod (IResultGatherer resultGatherer, int N, int numBatches, double batchLength, int customersPerBatch, int l)
+			: base (new NumberSimulationGoal (numBatches * customersPerBatch), resultGatherer) {
 			this.numBatches = numBatches;
 			this.batchLength = batchLength;
 			this.customersPerBatch = customersPerBatch;
@@ -85,7 +85,7 @@ namespace QueueNetwork.Simulation.Method {
 		public void Process (double simTime, double timeSinceLastProcess, int numCustomersDelayed, ServerStatus[] serverStatus, int numberInQueue, int numRegenerations) {
 			areaNumInQueue += (numberInQueue * timeSinceLastProcess);
 			for (int i = 0; i < N; i++) {
-				if (serverStatus[i] == ServerStatus.BUSY) {
+				if (serverStatus [i] == ServerStatus.BUSY) {
 					areaServerStatus += timeSinceLastProcess;
 				}
 			}
@@ -94,11 +94,11 @@ namespace QueueNetwork.Simulation.Method {
 		public Interval<SimulationResult> GetResult (double confidenceIntervalPercentage) {
 			List<SimulationResult> resultsList = new List<SimulationResult> (results);
 			resultsList.RemoveRange (0, l);
-			return SimulationResult.CreateInterval(resultsList, confidenceIntervalPercentage, null);
+			return SimulationResult.CreateInterval (resultsList, confidenceIntervalPercentage, null);
 		}
 
 		public override string ToString () {
-			return string.Format("Batch Means ({0}, {1}, {2})", numBatches, batchLength, customersPerBatch);
+			return string.Format ("Batch Means ({0}, {1}, {2})", numBatches, batchLength, customersPerBatch);
 		}
 	}
 }

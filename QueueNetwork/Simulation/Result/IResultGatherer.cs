@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QueueNetwork.Simulation.Result {
+namespace QueueNetwork {
 	public interface IResultGatherer {
-		List<SimulationResult> GetResults();
-		Interval<SimulationResult> GetConfidenceInterval(double confidenceIntervalPercentage);
+		List<SimulationResult> GetResults ();
+
+		Interval<SimulationResult> GetConfidenceInterval (double confidenceIntervalPercentage);
 	}
 }
 

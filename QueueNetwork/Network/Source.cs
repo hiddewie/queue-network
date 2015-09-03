@@ -16,6 +16,7 @@ namespace QueueNetwork {
 				PreEvent (this, eventArgs);
 			}
 		}
+
 		public void CallPostEvent (Event eventArgs) {
 			if (PostEvent != null) {
 				PostEvent (this, eventArgs);
@@ -24,10 +25,13 @@ namespace QueueNetwork {
 
 		public Source () {
 		}
+
 		public Source (Location location) {
 			this.DepartLocation = location;
 		}
+
 		public abstract Dictionary<Trigger, double> NextTriggers ();
+
 		public abstract void Trigger (Trigger t);
 	}
 }

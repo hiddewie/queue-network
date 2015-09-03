@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 
 using QueueNetwork;
-using QueueNetwork.Simulation.Result;
-using QueueNetwork.Simulation.Method;
 
-namespace QueueNetwork.Simulation {
+namespace QueueNetwork {
 	public class NetworkSimulation {
 		private Network network;
 
@@ -21,17 +19,17 @@ namespace QueueNetwork.Simulation {
 
 			KeyValuePair<Trigger, double> nextTrigger;
 			do {
-				nextTrigger = DetermineNextTrigger(network.NextTriggers());
-				Clock.AdvanceTo(nextTrigger.Value);
-				network.Trigger(nextTrigger.Key);
+				nextTrigger = DetermineNextTrigger (network.NextTriggers ());
+				Clock.AdvanceTo (nextTrigger.Value);
+				network.Trigger (nextTrigger.Key);
 			} while (!simulationMethod.Goal.Finished ());
 		}
 
-		private KeyValuePair<Trigger, double> DetermineNextTrigger(Dictionary<Trigger, double> events) {
+		private KeyValuePair<Trigger, double> DetermineNextTrigger (Dictionary<Trigger, double> events) {
 			if (events.Count == 0) {
 				throw new Exception ("Cannot deptermine next trigger of empty event list");
 			}
-			KeyValuePair<Trigger, double> ret = new KeyValuePair<Trigger, double>(null, Constants.INF);
+			KeyValuePair<Trigger, double> ret = new KeyValuePair<Trigger, double> (null, Constants.INF);
 			foreach (KeyValuePair<Trigger, double> item in events) {
 				if (item.Value < ret.Value) {
 					ret = item;

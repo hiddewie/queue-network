@@ -6,6 +6,7 @@ namespace QueueNetwork {
 			get;
 			private set;
 		}
+
 		public IArriving To {
 			get;
 			private set;

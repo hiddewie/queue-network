@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace QueueNetwork.Printer {
+namespace QueueNetwork {
 	public class ConsolePrinter : INetworkPrinter {
-		public void PrintNetwork(Network network) {
+		public void PrintNetwork (Network network) {
 			throw new NotImplementedException ();
 		}
 	}

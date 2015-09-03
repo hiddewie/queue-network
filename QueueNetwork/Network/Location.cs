@@ -16,6 +16,7 @@ namespace QueueNetwork {
 				PreArrive (this, eventArgs);
 			}
 		}
+
 		public void CallPostArrive (ArriveEvent eventArgs) {
 			if (PostArrive != null) {
 				PostArrive (this, eventArgs);
@@ -27,6 +28,7 @@ namespace QueueNetwork {
 				PreEvent (this, eventArgs);
 			}
 		}
+
 		public void CallPostEvent (Event eventArgs) {
 			if (PostEvent != null) {
 				PostEvent (this, eventArgs);
@@ -37,9 +39,13 @@ namespace QueueNetwork {
 			get;
 			set;
 		}
-		public abstract Dictionary<Trigger, double> NextTriggers();
-		public abstract void Trigger(Trigger t);
-		public abstract void Arrive(Unit unit, Component source);
-		public abstract bool HasUnits();
+
+		public abstract Dictionary<Trigger, double> NextTriggers ();
+
+		public abstract void Trigger (Trigger t);
+
+		public abstract void Arrive (Unit unit, Component source);
+
+		public abstract bool HasUnits ();
 	}
 }

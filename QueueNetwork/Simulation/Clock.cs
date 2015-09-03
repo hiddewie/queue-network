@@ -1,6 +1,6 @@
 ﻿using System;
 
-using QueueNetwork.Simulation;
+using QueueNetwork;
 
 namespace QueueNetwork {
 	public class Clock {
@@ -13,7 +13,7 @@ namespace QueueNetwork {
 
 		public static void AdvanceTo (double t) {
 			if (t < time) {
-				throw new Exception (String.Format("Invalid time {0}, while clock time is {1}", time, t));
+				throw new Exception (String.Format ("Invalid time {0}, while clock time is {1}", time, t));
 			}
 			time = t;
 		}

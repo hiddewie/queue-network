@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using QueueNetwork.Distibution;
+using QueueNetwork;
 
 namespace QueueNetwork {
 	public class DistributionSource : Source {
@@ -10,19 +10,19 @@ namespace QueueNetwork {
 
 		public DistributionSource (IDistribution<double> distribution) {
 			Distribution = distribution;
-			nextDeparture = Clock.GetTime() + Distribution.NextRandom ();
+			nextDeparture = Clock.GetTime () + Distribution.NextRandom ();
 		}
 
-		public override Dictionary<Trigger, double> NextTriggers() {
+		public override Dictionary<Trigger, double> NextTriggers () {
 			return new Dictionary<Trigger, double> {
-				{new DepartTrigger(this), nextDeparture}
+				{ new DepartTrigger (this), nextDeparture }
 			};
 		}
 
 		public override void Trigger (Trigger t) {
 			if (t is DepartTrigger) {
 				CallPreEvent (new DepartEvent (this, DepartLocation));
-				nextDeparture = Clock.GetTime() + Distribution.NextRandom ();
+				nextDeparture = Clock.GetTime () + Distribution.NextRandom ();
 
 				Unit unit = new Unit ();
 				unit.SystemArriveTime = Clock.GetTime ();

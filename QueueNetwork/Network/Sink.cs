@@ -19,19 +19,20 @@ namespace QueueNetwork {
 				PreArrive (this, eventArgs);
 			}
 		}
+
 		public void CallPostArrive (ArriveEvent eventArgs) {
 			if (PostArrive != null) {
 				PostArrive (this, eventArgs);
 			}
 		}
 
-		public void Arrive(Unit unit, Component source) {
-			CallPreArrive (new ArriveEvent());
+		public void Arrive (Unit unit, Component source) {
+			CallPreArrive (new ArriveEvent ());
 			unit.SystemDepartTime = Clock.GetTime ();
 			unit.Sink = this;
 			Arrived++;
-			Console.WriteLine (String.Format(unit + " has arrived in sink at time {0}. The unit traveled from {1} to {2}", Clock.GetTime(), unit.Source, unit.Sink));
-			CallPostArrive (new ArriveEvent());
+			Console.WriteLine (String.Format (unit + " has arrived in sink at time {0}. The unit traveled from {1} to {2} in time {3}", Clock.GetTime (), unit.Source, unit.Sink, (unit.SystemDepartTime - unit.SystemArriveTime)));
+			CallPostArrive (new ArriveEvent ());
 		}
 	}
 }

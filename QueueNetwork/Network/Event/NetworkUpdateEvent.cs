@@ -6,6 +6,7 @@ namespace QueueNetwork {
 			get;
 			protected set;
 		}
+
 		public NetworkUpdateEvent (Trigger componentTrigger) {
 			this.ComponentTrigger = componentTrigger;
 		}
