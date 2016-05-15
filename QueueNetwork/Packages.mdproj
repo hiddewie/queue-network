@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{478E4F5E-D487-4D34-A0AF-81869954EB11}</ProjectGuid>
+    <Packages>
+      <Packages xmlns="">
+        <Package name="Microsoft Windows Binaries">
+          <Builder targetFile="QueueNetwork.tar.gz" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+            <RootEntry path="QueueNetwork.csproj" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>
