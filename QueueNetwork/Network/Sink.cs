@@ -4,7 +4,6 @@ namespace QueueNetwork {
 	public class Sink : Component, IArriving {
 		public event EventHandler PreArrive;
 		public event EventHandler PostArrive;
-
 		public int Arrived {
 			get;
 			protected set;

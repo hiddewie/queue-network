@@ -6,5 +6,9 @@ namespace QueueNetwork {
 			get;
 			set;
 		}
+		public string Name {
+			get;
+			set;
+		}
 	}
 }

@@ -21,4 +21,7 @@
     <Compile Include="NoEventException.cs" />
     <Compile Include="ParameterBag.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="MainClass.cs" />
+  </ItemGroup>
 </Project>

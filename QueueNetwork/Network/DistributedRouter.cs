@@ -4,19 +4,12 @@ using QueueNetwork;
 
 namespace QueueNetwork {
 	public class DistributedRouter : Router {
-		private List<IArriving> RouteLocations = new List<IArriving> ();
-		private UniformDiscreteDistribution distribution;
+		protected List<IArriving> RouteLocations = new List<IArriving> ();
+		protected IDistribution<int> distribution;
 
-		public DistributedRouter (List<IArriving> routeLocations) {
-			foreach (Location loc in routeLocations) {
-				AddRouteLocation (loc);
-			}
-			distribution = new UniformDiscreteDistribution (0, RouteLocations.Count - 1);
-		}
-
-		public void AddRouteLocation (Location routeLocation) {
-			RouteLocations.Add (routeLocation);
-			distribution = new UniformDiscreteDistribution (0, RouteLocations.Count - 1);
+		public DistributedRouter (IEnumerable<IArriving> routeLocations, IDistribution<int> distribution) {
+			RouteLocations.AddRange(routeLocations);
+			this.distribution = distribution;
 		}
 
 		public List<IArriving> GetRouteLocations () {
