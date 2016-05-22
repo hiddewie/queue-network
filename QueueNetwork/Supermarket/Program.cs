@@ -69,7 +69,7 @@ namespace Supermarket {
 				queues.Add (queue);
 			}
 
-			DistributedRouter router = new DistributedRouter(queues, new DiscreteDistribution(new double[] {1.0/numSinks, 1.0/numSinks, 1.0/numSinks, 1.0/numSinks, 1.0/numSinks, 1.0/numSinks}));
+			DistributedRouter router = new DistributedRouter(queues, new DiscreteDistribution(new double[] {1.5/numSinks, 1.5/numSinks, 1.0/numSinks, 1.0/numSinks, 0.5/numSinks, 0.5/numSinks}));
 			source.DepartLocation = router;
 			network.Add (router);
 

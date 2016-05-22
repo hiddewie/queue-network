@@ -1,9 +1,14 @@
 ﻿<Properties StartupItem="TestImpl\TestImpl.mdproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TestImplementation\MainClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Supermarket\Program.cs">
     <Files>
-      <File FileName="TestImplementation\MainClass.cs" Line="45" Column="4" />
-      <File FileName="TestImpl\MainClass.cs" Line="29" Column="27" />
+      <File FileName="Supermarket\Program.cs" Line="70" Column="5" />
+      <File FileName="Network\Router.cs" Line="1" Column="1" />
+      <File FileName="Network\DistributedRouter.cs" Line="1" Column="1" />
+      <File FileName="Network\UniformDistributedRouter.cs" Line="1" Column="1" />
+      <File FileName="Distribution\UniformDiscreteDistribution.cs" Line="1" Column="1" />
+      <File FileName="Distribution\DiscreteDistribution.cs" Line="1" Column="1" />
+      <File FileName="Distribution\UniformDistribtution.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
