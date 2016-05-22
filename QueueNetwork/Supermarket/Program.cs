@@ -4,17 +4,7 @@ using System.Collections.Generic;
 
 namespace Supermarket {
 
-	/*public class TrafficLight : QueueLocation {
-		public TrafficLight(double avCars) : base(new ExponentialDistribution(avCars)) {
-			
-		}
-	}*/
-
 	public class ResultGatherer : IResultGatherer {
-
-		/*public void OnSinkArrive (object sender, A e) {
-			//Console.WriteLine(e.
-		}*/
 
 		public List<SimulationResult> GetResults () {
 			return new List<SimulationResult> ();
